@@ -1,13 +1,14 @@
 package p.tomaszewski.FastRace.model;
 
 import javax.persistence.*;
+
 import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "drivers")
 public class Driver {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NotBlank
     private String firstName;
