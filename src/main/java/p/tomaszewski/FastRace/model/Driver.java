@@ -3,6 +3,7 @@ package p.tomaszewski.FastRace.model;
 import javax.persistence.*;
 
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "drivers")
@@ -18,9 +19,18 @@ public class Driver {
     private String team;
     @NotBlank
     private String car;
+    private LocalDateTime overview;
 
 
     public Driver() {
+    }
+
+    public LocalDateTime getOverview() {
+        return overview;
+    }
+
+    public void setOverview(LocalDateTime overview) {
+        this.overview = overview;
     }
 
     public String getFirstName() {
@@ -51,7 +61,7 @@ public class Driver {
         return car;
     }
 
-    void setCar(String car) {
+   public void setCar(String car) {
         this.car = car;
     }
 
