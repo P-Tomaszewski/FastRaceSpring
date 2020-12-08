@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "drivers")
@@ -21,8 +23,21 @@ public class Driver {
     private String car;
     private LocalDateTime overview;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "driverId")
+    private Set<DriverRaceResult> driverRaceResults;
+
+
+
 
     public Driver() {
+    }
+
+    public Set<DriverRaceResult> getDriverRaceResults() {
+        return driverRaceResults;
+    }
+
+    public void setDriverRaceResults(Set<DriverRaceResult> driverRaceResults) {
+        this.driverRaceResults = driverRaceResults;
     }
 
     public LocalDateTime getOverview() {

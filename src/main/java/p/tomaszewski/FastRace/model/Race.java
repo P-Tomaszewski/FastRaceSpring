@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "races")
@@ -16,11 +17,19 @@ public class Race {
     @NotBlank
     private String surface;
     private LocalDateTime data;
-
-
+//    @ManyToMany
+//    private List<Driver> drivers;
 
     public Race() {
     }
+
+//    public List<Driver> getDrivers() {
+//        return drivers;
+//    }
+//
+//    public void setDrivers(List<Driver> drivers) {
+//        this.drivers = drivers;
+//    }
 
     public int getId() {
         return id;
