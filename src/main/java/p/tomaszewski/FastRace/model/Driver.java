@@ -1,10 +1,11 @@
 package p.tomaszewski.FastRace.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,8 +23,7 @@ public class Driver {
     @NotBlank
     private String car;
     private LocalDateTime overview;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "driverId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "driver")
     private Set<DriverRaceResult> driverRaceResults;
 
 

@@ -1,8 +1,8 @@
 package p.tomaszewski.FastRace.model;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.validation.constraints.NotBlank;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,13 +11,37 @@ public class DriverRaceResult {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int driverId;
-    private int raceId;
     private int place;
     private LocalDateTime time;
     private LocalDateTime theBestTime;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "driver_id")
+    private Driver driver;
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "race_id")
+    private Race race;
+
+
 
     public DriverRaceResult() {
+    }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+    public Race getRace() {
+        return race;
+    }
+
+    public void setRace(Race race) {
+        this.race = race;
     }
 
     public int getId() {
@@ -26,22 +50,6 @@ public class DriverRaceResult {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getDriverId() {
-        return driverId;
-    }
-
-    public void setDriverId(int driverId) {
-        this.driverId = driverId;
-    }
-
-    public int getRaceId() {
-        return raceId;
-    }
-
-    public void setRaceId(int raceId) {
-        this.raceId = raceId;
     }
 
     public int getPlace() {

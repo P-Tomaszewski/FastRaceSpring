@@ -13,6 +13,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@RequestMapping("/races")
 public class RaceController {
     private static final Logger logger= LoggerFactory.getLogger(DriverController.class);
     private final RaceRepository repository;
@@ -21,26 +22,26 @@ public class RaceController {
         this.repository = repository;
     }
 
-    @PostMapping("/races")
+    @PostMapping
     ResponseEntity<Race> createRace(@RequestBody @Valid Race toCreate){
         Race result = repository.save(toCreate);
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
 
-    @GetMapping("/races")
+    @GetMapping
     ResponseEntity<List<Race>> readAllRaces(){
         logger.warn("Exposing all tasks");
         return ResponseEntity.ok(repository.findAll());
     }
 
-    @GetMapping("/races/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<Race> readRaces(@PathVariable int id){
         return repository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/races/{id}")
+    @PutMapping("/{id}")
     ResponseEntity<?> updateRace(@PathVariable int id, @RequestBody @Valid Race toUpdate){ //PathVariable = id z sciezki
         if(!repository.existsById(id)){
             return ResponseEntity.notFound().build();
@@ -50,7 +51,7 @@ public class RaceController {
         return ResponseEntity.noContent().build();
     }
     @Transactional
-    @PatchMapping("/races/{id}") //zmiana
+    @PatchMapping("/{id}") //zmiana
     public ResponseEntity<?> toggleDriver(@PathVariable int id){ //PathVariable = id z sciezki
         if(!repository.existsById(id)){
             return ResponseEntity.notFound().build();

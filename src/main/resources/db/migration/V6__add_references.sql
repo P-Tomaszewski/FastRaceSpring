@@ -1,6 +1,6 @@
 alter table DRIVERRACERESULTS
-    add foreign key (DRIVER_ID) references DRIVERS(ID);
+    add foreign key (driver_id) references drivers(id);
 
 alter table DRIVERRACERESULTS
-    add foreign key (RACE_ID) references RACES(ID);
+    add foreign key (race_id) references races(id);
 

@@ -13,6 +13,7 @@ import java.net.URI;
 import java.util.List;
 
 @RestController
+@RequestMapping("/drivers")
 public class DriverController {
     private static final Logger logger= LoggerFactory.getLogger(DriverController.class);
     private final DriverRepository repository;
@@ -21,26 +22,26 @@ public class DriverController {
         this.repository = repository;
     }
 
-    @PostMapping("/drivers")
+    @PostMapping
     ResponseEntity<Driver> creatDriver(@RequestBody @Valid Driver toCreate){
         Driver result = repository.save(toCreate);
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
 
-    @GetMapping("/drivers")
+    @GetMapping
     ResponseEntity<List<Driver>> readAllDrivers(){
         logger.warn("Exposing all tasks");
         return ResponseEntity.ok(repository.findAll());
     }
 
-    @GetMapping("/drivers/{id}")
+    @GetMapping("/{id}")
         ResponseEntity<Driver> readDriver(@PathVariable int id){
         return repository.findById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
         }
 
-    @PutMapping("/drivers/{id}")
+    @PutMapping("/{id}")
     ResponseEntity<?> updateDriver(@PathVariable int id, @RequestBody @Valid Driver toUpdate){ //PathVariable = id z sciezki
         if(!repository.existsById(id)){
             return ResponseEntity.notFound().build();
@@ -50,7 +51,7 @@ public class DriverController {
         return ResponseEntity.noContent().build();
     }
     @Transactional
-    @PatchMapping("/drivers/{id}") //zmiana
+    @PatchMapping("/{id}") //zmiana
    public ResponseEntity<?> toggleDriver(@PathVariable int id){ //PathVariable = id z sciezki
         if(!repository.existsById(id)){
             return ResponseEntity.notFound().build();
