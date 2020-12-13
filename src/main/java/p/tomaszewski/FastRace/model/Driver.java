@@ -14,7 +14,7 @@ public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String firstName;
+    public String firstName;
     private String lastName;
     private String team;
     private String car;
@@ -43,7 +43,6 @@ public class Driver {
         this.lastName = lastName;
         this.team = team;
         this.car = car;
-        this.overview = overview;
     }
 
     public void setOverview(LocalDateTime overview) {

@@ -28,5 +28,7 @@ public class DriverService {
                 .collect(Collectors.toList());
     }
 
+    public List<Driver> readAll2(){return repository.findAll();}
+
 
 }

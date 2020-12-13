@@ -21,13 +21,13 @@ public class DriverReadModel {
         lastName = source.getLastName();
         team = source.getTeam();
         car = source.getCar();
-        overview = source.getOverview();
+//        overview = source.getOverview();
 //        source.getDriverRaceResults().stream()
 //                .sorted(Comparator.comparing(DriverRaceResult::getTheBestTime))
 //                .if
-        driverRaceResults = source.getDriverRaceResults().stream().map(DriverRaceResultReadModel::new)
-                .collect(Collectors
-                        .toSet());
+//        driverRaceResults = source.getDriverRaceResults().stream().map(DriverRaceResultReadModel::new)
+//                .collect(Collectors
+//                        .toSet());
 
     }
 

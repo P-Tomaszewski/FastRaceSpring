@@ -63,15 +63,14 @@ public class DriverWriteModel {
 
     public Driver toDriver(){
         var result = new Driver();
+        result.setCar(car);
         result.setFirstName(firstName);
         result.setLastName(lastName);
-        result.setCar(car);
         result.setTeam(team);
-        result.setOverview(overview);
-        result.setDriverRaceResults(
-                driverRaceResults.stream()
-                        .map(DriverRaceResultWriteModel::toDriverRaceResult)
-                        .collect(Collectors.toSet()));
+//        result.setDriverRaceResults(
+//                driverRaceResults.stream()
+//                        .map(DriverRaceResultWriteModel::toDriverRaceResult)
+//                        .collect(Collectors.toSet()));
     return result;
     }
 }

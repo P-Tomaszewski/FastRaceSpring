@@ -9,3 +9,7 @@ spring:
      ddl-auto: validate
  flyway:
    baseline-on-migrate: on
+   hibernate:
+     dialect=org:
+       hibernate:
+         dialect: H2Dialect

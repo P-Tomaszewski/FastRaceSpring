@@ -45,6 +45,7 @@
     </nav>
 </head>
 <body>
+<main>
 <h1 class='mb-3'>Top3 drivers</h1>
 <table id="dtBasicExample" class="table" width="100%">
     <thead>
@@ -64,31 +65,46 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>1.</td>
-        <td>ADAM</td>
-        <td>JURECKI</td>
-        <td>STW</td>
-        <td>BMW E30 344i</td>
-        <td>101</td>
-    </tr>
-    <tr>
-        <td>2.</td>
-        <td>ARTUR</td>
-        <td>KRZYSZTON</td>
-        <td>TurboWorks Drift Team</td>
-        <td>BMW E30 340i</td>
-        <td>97</td>
+    <!--/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/-->
+    <dl th:each="driver : ${drivers}">
+        <dd>
+            <tr>
+<!--                ${driver.lastName} ${driver.team} ${driver.car}"-->
+                <td th:each="driver,iterStat : ${driver}" th:text="${driverStat.count}"></td>
+                <td th:each="driver : ${driver}" th:text="${driver.firstName}"></td>
+                <td th:each="driver : ${driver}" th:text="${driver.lastName}"></td>
+                <td th:each="driver : ${driver}" th:text="${driver.team}"></td>
+                <td th:each="driver : ${driver}" th:text="${driver.car}"></td>
+                <td th:each="driver : ${driver}" th:text="000"></td>
+            </tr>
+        </dd>
+    </dl>
 
-    </tr>
-    <tr>
-        <td>3.</td>
-        <td>ARKADIUSZ</td>
-        <td>KUBICZEK</td>
-        <td>AMZ Motorsport Team	</td>
-        <td>BMW E30 335i</td>
-        <td>97</td>
-    </tr>
+<!--    <tr>-->
+<!--        <td>1.</td>-->
+<!--        <td>ADAM</td>-->
+<!--        <td>JURECKI</td>-->
+<!--        <td>STW</td>-->
+<!--        <td>BMW E30 344i</td>-->
+<!--        <td>101</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>2.</td>-->
+<!--        <td>ARTUR</td>-->
+<!--        <td>KRZYSZTON</td>-->
+<!--        <td>TurboWorks Drift Team</td>-->
+<!--        <td>BMW E30 340i</td>-->
+<!--        <td>97</td>-->
+
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>3.</td>-->
+<!--        <td>ARKADIUSZ</td>-->
+<!--        <td>KUBICZEK</td>-->
+<!--        <td>AMZ Motorsport Team	</td>-->
+<!--        <td>BMW E30 335i</td>-->
+<!--        <td>97</td>-->
+<!--    </tr>-->
     </td>
     </tr>
     </tbody>
@@ -110,6 +126,7 @@
         <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
     </div>
 </footer>
+</main>
 </body>
 
 </html>

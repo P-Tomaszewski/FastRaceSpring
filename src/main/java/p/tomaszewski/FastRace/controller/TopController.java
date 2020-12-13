@@ -8,36 +8,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import p.tomaszewski.FastRace.logic.DriverService;
 import p.tomaszewski.FastRace.model.Driver;
+import p.tomaszewski.FastRace.model.projection.DriverReadModel;
 import p.tomaszewski.FastRace.model.projection.DriverWriteModel;
 
-import javax.validation.Valid;
+import java.util.List;
 
 @Controller
-@RequestMapping("/addDriver")
-public class ProjectController {
+@RequestMapping("/top")
+public class TopController {
     private final DriverService service;
 
-    public ProjectController(DriverService service) {
+    public TopController(DriverService service) {
         this.service = service;
     }
 
 
     @GetMapping
-    String showProjects(Model model){
-        var driverToEdit = new Driver();
-        driverToEdit.setFirstName("test");
-        model.addAttribute("driver", driverToEdit);
-        return "addDriver";
+    String showTopDrivers(Model model){
+        var drivers = new Driver();
+        model.addAttribute("driver", drivers);
+        return "top";
     }
 
     @PostMapping
-    String addProject(@ModelAttribute("driver") @Valid DriverWriteModel current, Model model){
+    String addProject(@ModelAttribute("driver") DriverWriteModel current, Model model){
         service.createDriver(current);
         model.addAttribute("driver", new DriverWriteModel());
 //        model.addAttribute("message", "dodano kierowce");
-        return "addDriver";
+        return "top";
+    }
 
-
+    @ModelAttribute("drivers")
+    List<DriverReadModel> getDrivers(){
+        return service.readAll();
     }
 
 
