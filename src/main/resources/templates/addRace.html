@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>FastRace</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link th:href="@{/css/index.css}" rel="stylesheet"/>
     <nav class="navbar navbar-expand-md">
         <a class="navbar-brand" href="home.html">
-            <img src="img/logo7.png" alt="">
-        </a>
+            <img th:src="@{/img/logo7.png}"/> </a>
         <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,8 +24,8 @@
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Add data </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item" href="addRace.html">Add race</a></li>
-                        <li><a class="dropdown-item"  href="addDriver.html">Add driver</a></li>
-                        <li><a class="dropdown-item"  href="addScore.html">Add score</a></li>
+                        <li><a class="dropdown-item" href="addDriver.html">Add driver</a></li>
+                        <li><a class="dropdown-item" href="addScore.html">Add score</a></li>
                         </li>
                     </ul>
                 </li>
@@ -54,13 +54,13 @@
     <div class="md-form">
         <label for="surface">Surface</label>
         <select name="Surface" id="surface" class="form-control">
-            <option> Asfalt </option>
+            <option> Asfalt</option>
 
-            <option> Żwir </option>
+            <option> Żwir</option>
 
-            <option> Mieszana </option>
+            <option> Mieszana</option>
 
-            <option> Inne </option>
+            <option> Inne</option>
         </select>
     </div>
     <div class="md-form">
@@ -70,7 +70,8 @@
     </div>
 
     <button id="addRace" class="btn btn-outline-secondary btn-lg"
-            onclick="checkRaceName()">Add race</button>
+            onclick="checkRaceName()">Add race
+    </button>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -79,8 +80,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
 </script>
-<script src="js/validateAddRace.js"></script>
-<script src="main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}"></script>
+<script type="text/javascript" th:src="@{/js/validateAddDriver.js}"></script>
+<script type="text/javascript" th:src="@{/js/main.js}"></script>
 <footer class="page-footer">
     <div class="container">
         <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
