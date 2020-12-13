@@ -28,6 +28,12 @@ public class DriverRaceResult {
     public DriverRaceResult() {
     }
 
+    public DriverRaceResult(int place, LocalDateTime time, LocalDateTime theBestTime) {
+        this.place = place;
+        this.time = time;
+        this.theBestTime = theBestTime;
+    }
+
     public Driver getDriver() {
         return driver;
     }

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/index.css}" rel="stylesheet"/>
     <nav class="navbar navbar-expand-md">
         <a class="navbar-brand" href="home.html">
             <img th:src="@{/img/logo7.png}"/>
@@ -47,51 +47,58 @@
 
 </head>
 <body>
+<main>
 
-<div class="container featuresRace">
-    <h1>Add Driver</h1>
-    <div class="md-form">
-        <label for="name">Name</label>
-        <input type="text" id="name" class="form-control" onblur="checkName()">
-        <div id="feedbackName"></div>
-    </div>
-    <div class="md-form">
-        <label for="lastname">Last Name</label>
-        <input type="text" id="lastname" class="form-control">
-        <div id="feedbackLastname"></div>
-    </div>
-    <div class="md-form">
-        <label for="team">Team</label>
-        <input type="text" id="team" class="form-control">
-        <div id="feedbackTeam"></div>
-    </div>
-    <div class="md-form">
-        <label for="car">Car</label>
-        <input type="text" id="car" class="form-control">
-        <div id="feedbackCar"></div>
-    </div>
+    <!--/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/-->
+    <form action="#" method="post" th:action="@{/addDriver}" th:object="${driver}">
+        <div class="container featuresRace">
+            <h1>Add Driver</h1>
+            <div class="md-form">
+                <label for="name">Name</label>
+                <input type="text" th:field="*{firstName}" id="name" class="form-control" onblur="checkName()">
+                <div id="feedbackName"></div>
+            </div>
+            <div class="md-form">
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" class="form-control">
+                <div id="feedbackLastname"></div>
+            </div>
+            <div class="md-form">
+                <label for="team">Team</label>
+                <input type="text" id="team" class="form-control">
+                <div id="feedbackTeam"></div>
+            </div>
+            <div class="md-form">
+                <label for="car">Car</label>
+                <input type="text" id="car" class="form-control">
+                <div id="feedbackCar"></div>
+            </div>
 
-    <button id="addDriver" class="btn btn-outline-secondary btn-lg"
-            onclick="checkName()">Add driver
-    </button>
-</div>
+            <button id="addDriver" class="btn btn-outline-secondary btn-lg"
+                    onclick="checkName()">Add driver
+            </button>
+        </div>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}"></script>
-<script type="text/javascript" th:src="@{/js/validateAddDriver.js}"></script>
-<script type="text/javascript" th:src="@{/js/main.js}"></script>
-<footer class="page-footer">
-    <div class="container">
-        <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
-    </div>
-</footer>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}"></script>
+        <script type="text/javascript" th:src="@{/js/validateAddDriver.js}"></script>
+        <script type="text/javascript" th:src="@{/js/main.js}"></script>
+        <footer class="page-footer">
+            <div class="container">
+                <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
+            </div>
+        </footer>
+    </form>
+</main>
 </body>
 
 </html>

@@ -14,20 +14,13 @@ public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @NotBlank
     private String firstName;
-    @NotBlank
     private String lastName;
-    @NotBlank
     private String team;
-    @NotBlank
     private String car;
     private LocalDateTime overview;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "driver")
     private Set<DriverRaceResult> driverRaceResults;
-
-
-
 
     public Driver() {
     }
@@ -44,6 +37,15 @@ public class Driver {
         return overview;
     }
 
+    public Driver(String firstName, String lastName, String team,
+                  String car, LocalDateTime overview) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.team = team;
+        this.car = car;
+        this.overview = overview;
+    }
+
     public void setOverview(LocalDateTime overview) {
         this.overview = overview;
     }
@@ -52,7 +54,7 @@ public class Driver {
         return firstName;
     }
 
-    void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -60,7 +62,7 @@ public class Driver {
         return lastName;
     }
 
-    void setLastName(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -68,7 +70,7 @@ public class Driver {
         return team;
     }
 
-    void setTeam(String team) {
+    public void setTeam(String team) {
         this.team = team;
     }
 
@@ -76,11 +78,11 @@ public class Driver {
         return car;
     }
 
-   public void setCar(String car) {
+    public void setCar(String car) {
         this.car = car;
     }
 
-   public void setId(int id) {
+    public void setId(int id) {
         this.id = id;
     }
 
