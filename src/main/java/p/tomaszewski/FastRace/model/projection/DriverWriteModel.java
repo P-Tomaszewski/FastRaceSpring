@@ -1,14 +1,21 @@
 package p.tomaszewski.FastRace.model.projection;
 
 import p.tomaszewski.FastRace.model.Driver;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DriverWriteModel {
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String lastName;
+    @NotEmpty
     private String team;
+    @NotEmpty
     private String car;
     private LocalDateTime overview;
     private Set<DriverRaceResultWriteModel> driverRaceResults;

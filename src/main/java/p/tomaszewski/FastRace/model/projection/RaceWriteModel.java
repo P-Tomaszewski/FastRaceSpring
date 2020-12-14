@@ -3,13 +3,17 @@ package p.tomaszewski.FastRace.model.projection;
 import p.tomaszewski.FastRace.model.Driver;
 import p.tomaszewski.FastRace.model.Race;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RaceWriteModel {
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String surface;
+    @NotEmpty
     private LocalDateTime data;
     private Set<DriverRaceResultWriteModel> driverRaceResults;
 

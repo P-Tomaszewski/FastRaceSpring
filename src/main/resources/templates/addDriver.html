@@ -50,28 +50,29 @@
 <main>
 
     <!--/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/-->
+<!--To do poprawić wyświetlanie błędu walidacji-->
     <form action="#" method="post" th:action="@{/addDriver}" th:object="${driver}">
         <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>
         <div class="container featuresRace">
             <h1>Add Driver</h1>
             <div class="md-form">
                 <label for="name">Name</label>
-                <input type="text" th:field="*{firstName}" id="name" class="form-control" onblur="checkName()">
+                <input type="text" th:field="*{firstName}" th:errorclass="'Bdc(red)'" id="name" class="form-control" onblur="checkName()">
                 <div id="feedbackName"></div>
             </div>
             <div class="md-form">
                 <label for="lastname">Last Name</label>
-                <input type="text" th:field="*{lastName}" id="lastname" class="form-control">
+                <input type="text" th:field="*{lastName}" th:errorclass="'Bdc(red)'" id="lastname" class="form-control">
                 <div id="feedbackLastname"></div>
             </div>
             <div class="md-form">
                 <label for="team">Team</label>
-                <input type="text" th:field="*{team}" id="team" class="form-control">
+                <input type="text" th:field="*{team}" th:errorclass="'Bdc(red)'" id="team" class="form-control">
                 <div id="feedbackTeam"></div>
             </div>
             <div class="md-form">
                 <label for="car">Car</label>
-                <input type="text" th:field="*{car}" id="car" class="form-control">
+                <input type="text" th:field="*{car}" th:errorclass="'Bdc(red)'" id="car" class="form-control">
                 <div id="feedbackCar"></div>
             </div>
 

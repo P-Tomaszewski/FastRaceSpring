@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Set;
 
@@ -14,9 +14,13 @@ public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @NotNull
     public String firstName;
+    @NotNull
     private String lastName;
+    @NotNull
     private String team;
+    @NotNull
     private String car;
     private LocalDateTime overview;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "driver")
@@ -37,8 +41,9 @@ public class Driver {
         return overview;
     }
 
-    public Driver(String firstName, String lastName, String team,
+    public Driver(@NotNull String firstName, String lastName, String team,
                   String car, LocalDateTime overview) {
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.team = team;
