@@ -1,6 +1,7 @@
 package p.tomaszewski.FastRace.model.projection;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import p.tomaszewski.FastRace.enums.Surface;
 import p.tomaszewski.FastRace.model.Driver;
 import p.tomaszewski.FastRace.model.Race;
 
@@ -13,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class RaceWriteModel {
     private String name;
-    private String surface;
+    private Surface surface;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime data;
     private List<DriverRaceResultWriteModel> driverRaceResults = new ArrayList<>();
@@ -39,10 +40,10 @@ public class RaceWriteModel {
     }
 
     public String getSurface() {
-        return surface;
+        return surface.getDisplayValue();
     }
 
-    public void setSurface(String surface) {
+    public void setSurface(Surface surface) {
         this.surface = surface;
     }
 

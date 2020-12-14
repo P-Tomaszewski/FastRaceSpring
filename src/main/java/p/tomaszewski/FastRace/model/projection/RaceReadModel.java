@@ -1,5 +1,6 @@
 package p.tomaszewski.FastRace.model.projection;
 
+import p.tomaszewski.FastRace.enums.Surface;
 import p.tomaszewski.FastRace.model.Race;
 
 import java.time.LocalDateTime;

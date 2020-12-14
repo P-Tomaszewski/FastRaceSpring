@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import p.tomaszewski.FastRace.enums.Surface;
 import p.tomaszewski.FastRace.logic.RaceService;
 import p.tomaszewski.FastRace.model.Race;
 import p.tomaszewski.FastRace.model.RaceRepository;
@@ -61,7 +62,7 @@ public class RaceController {
             return "addRace";
         }
         service.createRace(current);
-        model.addAttribute("race", new DriverWriteModel());
+        model.addAttribute("race", new RaceWriteModel());
 //        model.addAttribute("message", "dodano kierowce");
         return "addRace";
 
@@ -95,7 +96,7 @@ public class RaceController {
             return ResponseEntity.notFound().build();
         }
         repository.findById(id)
-                .ifPresent(driver -> driver.setSurface("Brabus"));
+                .ifPresent(driver -> driver.setSurface(Surface.ASPHALT));
         return ResponseEntity.noContent().build();
     }
 }

@@ -1,6 +1,7 @@
 package p.tomaszewski.FastRace.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import p.tomaszewski.FastRace.enums.Surface;
 
 import javax.persistence.*;
 
@@ -53,8 +54,8 @@ public class Race {
         return surface;
     }
 
-    public void setSurface(String surface) {
-        this.surface = surface;
+    public void setSurface(Surface surface) {
+        this.surface = surface.getDisplayValue();
     }
 
     public LocalDateTime getData() {

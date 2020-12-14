@@ -57,20 +57,15 @@
     </div>
     <div class="md-form">
         <label for="surface">Surface</label>
-        <input type="text" th:field="*{surface}" id="surface" class="form-control" onblur="checkRaceName()">
-<!--        <select name="Surface" id="surface" class="form-control">-->
-<!--            <option> Asfalt</option>-->
-
-<!--            <option> Żwir</option>-->
-
-<!--            <option> Mieszana</option>-->
-
-<!--            <option> Inne</option>-->
-<!--        </select>-->
+<!--        <input type="text" th:field="*{surface}" id="surface" class="form-control" onblur="checkRaceName()">-->
+        <select name="Surface" id="surface" class="form-control">
+            <option th:each="surface : ${T(p.tomaszewski.FastRace.enums.Surface).values()}"
+                    th:value="${surface}" th:text="${surface.displayValue}"></option>
+        </select>
     </div>
     <div class="md-form">
         <label for="date">data</label>
-        <input type=text th:field="*{data}" id="date" class="form-control">
+        <input type=datetime-local th:field="*{data}" id="date" class="form-control">
         <div id="feedbackDate"></div>
     </div>
 
