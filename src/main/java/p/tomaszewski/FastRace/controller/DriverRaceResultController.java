@@ -9,10 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import p.tomaszewski.FastRace.logic.DriverRaceResultService;
-import p.tomaszewski.FastRace.model.Driver;
+import p.tomaszewski.FastRace.logic.DriverService;
+import p.tomaszewski.FastRace.logic.RaceService;
 import p.tomaszewski.FastRace.model.DriverRaceResult;
 import p.tomaszewski.FastRace.model.DriverRaceResultRepository;
 import p.tomaszewski.FastRace.model.projection.DriverRaceResultWriteModel;
+import p.tomaszewski.FastRace.model.projection.DriverReadModel;
+import p.tomaszewski.FastRace.model.projection.RaceReadModel;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -24,11 +27,13 @@ public class DriverRaceResultController {
     private static final Logger logger = LoggerFactory.getLogger(DriverRaceResultController.class);
     private final DriverRaceResultRepository repository;
     private final DriverRaceResultService service;
+    private final RaceService raceService;
 
 
-    public DriverRaceResultController(final DriverRaceResultRepository repository, DriverRaceResultService service) {
+    public DriverRaceResultController(final DriverRaceResultRepository repository, DriverRaceResultService service, RaceService raceService) {
         this.repository = repository;
         this.service = service;
+        this.raceService = raceService;
     }
 
 
@@ -105,4 +110,9 @@ public class DriverRaceResultController {
 //                .ifPresent(driverRaceResult -> driverRaceResult.setScore(5));
 //        return ResponseEntity.noContent().build();
 //    }
+
+    @ModelAttribute("races")
+    List<RaceReadModel> getRaces(){
+        return raceService.readAll();
+    }
 }
