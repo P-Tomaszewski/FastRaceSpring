@@ -43,29 +43,34 @@
     </nav>
 </head>
 <body>
+<main>
+<!--/*@thymesVar id="race" type="p.tomaszewski.FastRace.model.Race"*/-->
+<form action="#" method="post" th:action="@{/addRace}" th:object="${race}">
+    <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>
 
 <div class="container featuresRace">
     <h1>Add Race</h1>
     <div class="md-form">
         <label for="racename">Race name</label>
-        <input type="text" id="racename" class="form-control" onblur="checkRaceName()">
+        <input type="text" th:field="*{name}" id="racename" class="form-control" onblur="checkRaceName()">
         <div id="feedbackRacename"></div>
     </div>
     <div class="md-form">
         <label for="surface">Surface</label>
-        <select name="Surface" id="surface" class="form-control">
-            <option> Asfalt</option>
+        <input type="text" th:field="*{surface}" id="surface" class="form-control" onblur="checkRaceName()">
+<!--        <select name="Surface" id="surface" class="form-control">-->
+<!--            <option> Asfalt</option>-->
 
-            <option> Żwir</option>
+<!--            <option> Żwir</option>-->
 
-            <option> Mieszana</option>
+<!--            <option> Mieszana</option>-->
 
-            <option> Inne</option>
-        </select>
+<!--            <option> Inne</option>-->
+<!--        </select>-->
     </div>
     <div class="md-form">
         <label for="date">data</label>
-        <input type=date id="date" class="form-control">
+        <input type=text th:field="*{data}" id="date" class="form-control">
         <div id="feedbackDate"></div>
     </div>
 
@@ -89,6 +94,8 @@
         <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
     </div>
 </footer>
+    </form>
+    </main>
 </body>
 
 </html>

@@ -17,9 +17,9 @@ public class RaceReadModel {
         name = source.getName();
         surface = source.getSurface();
         data = source.getData();
-        driverRaceResults = source.getDriverRaceResults().stream().map(DriverRaceResultReadModel::new)
-                .collect(Collectors
-                        .toSet());
+//        driverRaceResults = source.getDriverRaceResults().stream().map(DriverRaceResultReadModel::new)
+//                .collect(Collectors
+//                        .toSet());
 
     }
 

@@ -1,27 +1,32 @@
 package p.tomaszewski.FastRace.model.projection;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import p.tomaszewski.FastRace.model.Driver;
 import p.tomaszewski.FastRace.model.Race;
 
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RaceWriteModel {
-    @NotEmpty
     private String name;
-    @NotEmpty
     private String surface;
-    @NotEmpty
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime data;
-    private Set<DriverRaceResultWriteModel> driverRaceResults;
+    private List<DriverRaceResultWriteModel> driverRaceResults = new ArrayList<>();
 
-    public Set<DriverRaceResultWriteModel> getDriverRaceResults() {
+    public RaceWriteModel() {
+        driverRaceResults.add(new DriverRaceResultWriteModel());
+    }
+
+    public List<DriverRaceResultWriteModel> getDriverRaceResults() {
         return driverRaceResults;
     }
 
-    public void setDriverRaceResults(Set<DriverRaceResultWriteModel> driverRaceResults) {
+    public void setDriverRaceResults(List<DriverRaceResultWriteModel> driverRaceResults) {
         this.driverRaceResults = driverRaceResults;
     }
 
@@ -50,14 +55,14 @@ public class RaceWriteModel {
     }
 
     public Race toRace(){
-        var result = new Race();
+        Race result = new Race();
+        result.setName(name);
         result.setSurface(surface);
         result.setData(data);
-        result.setName(name);
-        result.setDriverRaceResults(
-                driverRaceResults.stream()
-                        .map(DriverRaceResultWriteModel::toDriverRaceResult)
-                        .collect(Collectors.toSet()));
+//        result.setDriverRaceResults(
+//                driverRaceResults.stream()
+//                        .map(DriverRaceResultWriteModel::toDriverRaceResult)
+//                        .collect(Collectors.toSet()));
         return result;
     }
 }
