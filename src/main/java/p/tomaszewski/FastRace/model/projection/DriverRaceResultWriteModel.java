@@ -1,39 +1,21 @@
 package p.tomaszewski.FastRace.model.projection;
 
+import p.tomaszewski.FastRace.model.Driver;
 import p.tomaszewski.FastRace.model.DriverRaceResult;
-
-import java.time.LocalDateTime;
+import p.tomaszewski.FastRace.model.Race;
 
 public class DriverRaceResultWriteModel {
-    private int place;
-    private LocalDateTime time;
-    private LocalDateTime theBestTime;
+    private int score;
 
-    public int getPlace() {
-        return place;
+    public int getScore() {
+        return score;
     }
 
-    public void setPlace(int place) {
-        this.place = place;
-    }
-
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
-        this.time = time;
-    }
-
-    public LocalDateTime getTheBestTime() {
-        return theBestTime;
-    }
-
-    public void setTheBestTime(LocalDateTime theBestTime) {
-        this.theBestTime = theBestTime;
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public DriverRaceResult toDriverRaceResult(){
-        return new DriverRaceResult(place, time, theBestTime);
+        return new DriverRaceResult(score);
     }
 }

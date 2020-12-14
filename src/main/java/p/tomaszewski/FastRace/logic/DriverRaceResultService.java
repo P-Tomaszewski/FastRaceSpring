@@ -17,7 +17,7 @@ public class DriverRaceResultService {
         this.repository = repository;
     }
 
-    public DriverRaceResultReadModel createRace(DriverRaceResultWriteModel source){
+    public DriverRaceResultReadModel createDriverRaceResultService(DriverRaceResultWriteModel source){
         DriverRaceResult result =  repository.save(source.toDriverRaceResult());
         return new DriverRaceResultReadModel(result);
     }

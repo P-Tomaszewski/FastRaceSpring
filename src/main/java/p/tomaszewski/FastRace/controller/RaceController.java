@@ -65,8 +65,6 @@ public class RaceController {
         model.addAttribute("race", new RaceWriteModel());
 //        model.addAttribute("message", "dodano kierowce");
         return "addRace";
-
-
     }
 
 //    @ResponseBody

@@ -3,7 +3,6 @@ package p.tomaszewski.FastRace.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "driverraceresults")
@@ -11,9 +10,7 @@ public class DriverRaceResult {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private int place;
-    private LocalDateTime time;
-    private LocalDateTime theBestTime;
+    private int score;
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "driver_id")
@@ -28,10 +25,8 @@ public class DriverRaceResult {
     public DriverRaceResult() {
     }
 
-    public DriverRaceResult(int place, LocalDateTime time, LocalDateTime theBestTime) {
-        this.place = place;
-        this.time = time;
-        this.theBestTime = theBestTime;
+    public DriverRaceResult(int score) {
+        this.score = score;
     }
 
     public Driver getDriver() {
@@ -58,27 +53,11 @@ public class DriverRaceResult {
         this.id = id;
     }
 
-    public int getPlace() {
-        return place;
+    public int getScore() {
+        return score;
     }
 
-    public void setPlace(int place) {
-        this.place = place;
-    }
-
-    public LocalDateTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDateTime time) {
-        this.time = time;
-    }
-
-    public LocalDateTime getTheBestTime() {
-        return theBestTime;
-    }
-
-    public void setTheBestTime(LocalDateTime theBestTime) {
-        this.theBestTime = theBestTime;
+    public void setScore(int place) {
+        this.score = place;
     }
 }

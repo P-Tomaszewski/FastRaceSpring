@@ -1,13 +1,10 @@
 package p.tomaszewski.FastRace.model.projection;
 
 import p.tomaszewski.FastRace.model.Driver;
-import p.tomaszewski.FastRace.model.DriverRaceResult;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class DriverReadModel {
     @NotNull
