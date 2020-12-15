@@ -3,6 +3,7 @@ package p.tomaszewski.FastRace.logic;
 import org.springframework.stereotype.Service;
 import p.tomaszewski.FastRace.model.DriverRaceResult;
 import p.tomaszewski.FastRace.model.DriverRaceResultRepository;
+import p.tomaszewski.FastRace.model.Race;
 import p.tomaszewski.FastRace.model.projection.DriverRaceResultReadModel;
 import p.tomaszewski.FastRace.model.projection.DriverRaceResultWriteModel;
 
@@ -17,8 +18,8 @@ public class DriverRaceResultService {
         this.repository = repository;
     }
 
-    public DriverRaceResultReadModel createDriverRaceResultService(DriverRaceResultWriteModel source){
-        DriverRaceResult result =  repository.save(source.toDriverRaceResult());
+    public DriverRaceResultReadModel createDriverRaceResultService(DriverRaceResultWriteModel source) {
+        DriverRaceResult result = repository.save(source.toDriverRaceResult());
         return new DriverRaceResultReadModel(result);
     }
 

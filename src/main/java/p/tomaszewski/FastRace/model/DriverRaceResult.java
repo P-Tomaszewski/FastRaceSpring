@@ -3,19 +3,18 @@ package p.tomaszewski.FastRace.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @Entity
 @Table(name = "driverraceresults")
 public class DriverRaceResult {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int score;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "driver_id")
     private Driver driver;
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "race_id")
     private Race race;
@@ -25,9 +24,11 @@ public class DriverRaceResult {
     public DriverRaceResult() {
     }
 
-    public DriverRaceResult(int score) {
-        this.score = score;
-    }
+//    public DriverRaceResult(int score, Driver driver, Race race) {
+//        this.score = score;
+//        this.driver = driver;
+//        this.race = race;
+//    }
 
     public Driver getDriver() {
         return driver;

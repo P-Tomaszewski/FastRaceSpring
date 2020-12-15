@@ -13,6 +13,7 @@ import p.tomaszewski.FastRace.logic.DriverService;
 import p.tomaszewski.FastRace.logic.RaceService;
 import p.tomaszewski.FastRace.model.DriverRaceResult;
 import p.tomaszewski.FastRace.model.DriverRaceResultRepository;
+import p.tomaszewski.FastRace.model.Race;
 import p.tomaszewski.FastRace.model.projection.DriverRaceResultWriteModel;
 import p.tomaszewski.FastRace.model.projection.DriverReadModel;
 import p.tomaszewski.FastRace.model.projection.RaceReadModel;
@@ -28,12 +29,14 @@ public class DriverRaceResultController {
     private final DriverRaceResultRepository repository;
     private final DriverRaceResultService service;
     private final RaceService raceService;
+    private final DriverService driverService;
 
 
-    public DriverRaceResultController(final DriverRaceResultRepository repository, DriverRaceResultService service, RaceService raceService) {
+    public DriverRaceResultController(final DriverRaceResultRepository repository, DriverRaceResultService service, RaceService raceService, DriverService driverService) {
         this.repository = repository;
         this.service = service;
         this.raceService = raceService;
+        this.driverService = driverService;
     }
 
 
@@ -52,9 +55,9 @@ public class DriverRaceResultController {
         if (bindingResult.hasErrors()) {
             return "addScore";
         }
+        current.setRace2(raceService.findById(current.getRace()).get());
         service.createDriverRaceResultService(current);
         model.addAttribute("driverraceresult", new DriverRaceResultWriteModel());
-//        model.addAttribute("message", "dodano kierowce");
         return "addScore";
     }
 
@@ -114,5 +117,10 @@ public class DriverRaceResultController {
     @ModelAttribute("races")
     List<RaceReadModel> getRaces(){
         return raceService.readAll();
+    }
+
+    @ModelAttribute("drivers")
+    List<DriverReadModel> getDrivers(){
+        return driverService.readAll();
     }
 }

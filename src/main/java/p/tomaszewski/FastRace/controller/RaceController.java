@@ -86,15 +86,15 @@ public class RaceController {
 //        return ResponseEntity.noContent().build();
 //    }
 
-    @Transactional
-    @ResponseBody
-    @PatchMapping("/{id}") //zmiana
-    public ResponseEntity<?> toggleDriver(@PathVariable int id){ //PathVariable = id z sciezki
-        if(!repository.existsById(id)){
-            return ResponseEntity.notFound().build();
-        }
-        repository.findById(id)
-                .ifPresent(driver -> driver.setSurface(Surface.ASPHALT));
-        return ResponseEntity.noContent().build();
-    }
+//    @Transactional
+//    @ResponseBody
+//    @PatchMapping("/{id}") //zmiana
+//    public ResponseEntity<?> toggleDriver(@PathVariable int id){ //PathVariable = id z sciezki
+//        if(!repository.existsById(id)){
+//            return ResponseEntity.notFound().build();
+//        }
+//        repository.findById(id)
+//                .ifPresent(driver -> driver.setSurface(Surface.ASPHALT));
+//        return ResponseEntity.noContent().build();
+//    }
 }

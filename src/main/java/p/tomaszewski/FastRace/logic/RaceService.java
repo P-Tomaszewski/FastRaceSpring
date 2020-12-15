@@ -7,6 +7,7 @@ import p.tomaszewski.FastRace.model.projection.RaceReadModel;
 import p.tomaszewski.FastRace.model.projection.RaceWriteModel;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,5 +27,10 @@ public class RaceService {
         return repository.findAll().stream()
                 .map(RaceReadModel::new)
                 .collect(Collectors.toList());
+    }
+
+    public Optional<Race> findById(int id){
+        int d = id;
+        return repository.findById(id);
     }
 }

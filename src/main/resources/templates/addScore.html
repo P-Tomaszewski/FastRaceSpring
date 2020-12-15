@@ -51,31 +51,31 @@
     <!--To do poprawić wyświetlanie błędu walidacji-->
     <!--/*@thymesVar id="driverraceresult" type="p.tomaszewski.FastRace.model.DriverRaceResult"*/-->
     <form action="#" method="post" th:action="@{/addScore}" th:object="${driverraceresult}">
-<!--        <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>-->
+                <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>
         <div class="container featuresRace">
             <h1>Add Score</h1>
             <div class="md-form">
                 <label for="race">Race</label>
+                <!--/*@thymesVar id="race" type="p.tomaszewski.FastRace.model.Race"*/-->
                 <select name="Race" id="race" class="form-control">
-                    <!--/*@thymesVar id="race" type="p.tomaszewski.FastRace.model.Race"*/-->
                     <dl th:each="race : ${races}">
                         <dd>
-                    <option th:each="race : ${race}" th:text="${race.name}"></option>
+                            <!--/*@thymesVar id="id" type="p.tomaszewski.FastRace.model.Race"*/-->
+                            <option th:each="race : ${race}" th:value="${race.id}" th:text="${race.name}"></option>
                         </dd>
                     </dl>
                 </select>
             </div>
             <div class="md-form">
                 <label for="driver">Driver</label>
-
-<!--                <select name="Driver" id="driver" class="form-control">-->
-<!--                    &lt;!&ndash;Kierowca będzie pobierany z bazy i wyświetlany do wyboru (nazwa+data)&ndash;&gt;-->
-<!--                    <option> Adam Jarkiewicz</option>-->
-
-<!--                    <option> Grzegorz Ludwicki</option>-->
-
-<!--                    <option> Paweł Jurecki</option>-->
-<!--                </select>-->
+                <select name="Driver" id="driver" class="form-control">
+<!--                    &lt;!&ndash;/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/&ndash;&gt;-->
+<!--                    <dl th:each="driver : ${drivers}">-->
+<!--                        <dd>-->
+<!--                            <option th:each="driver : ${driver}" th:value="${driver}" th:text="${driver.firstName}" ></option>-->
+<!--                        </dd>-->
+<!--                    </dl>-->
+                </select>
             </div>
             <div class="md-form">
                 <label for="score">Score</label>

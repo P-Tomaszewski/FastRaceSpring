@@ -14,8 +14,8 @@ import java.util.Set;
 @Table(name = "races")
 public class Race {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int id;
     private String name;
     private String surface;
     private LocalDateTime data;

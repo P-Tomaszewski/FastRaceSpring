@@ -12,8 +12,8 @@ import java.util.Set;
 @Table(name = "drivers")
 public class Driver {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public int id;
     @NotNull
     public String firstName;
     @NotNull

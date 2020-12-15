@@ -8,28 +8,40 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class RaceReadModel {
+    private int id;
     private String name;
     private String surface;
     private LocalDateTime data;
-    private Set<DriverRaceResultReadModel> driverRaceResults;
+//    private Set<DriverRaceResultReadModel> driverRaceResults;
 
 
     public RaceReadModel(Race source) {
         name = source.getName();
         surface = source.getSurface();
         data = source.getData();
+        id = source.getId();
+
 //        driverRaceResults = source.getDriverRaceResults().stream().map(DriverRaceResultReadModel::new)
 //                .collect(Collectors
 //                        .toSet());
 
     }
 
-    public Set<DriverRaceResultReadModel> getDriverRaceResults() {
-        return driverRaceResults;
+//    public Set<DriverRaceResultReadModel> getDriverRaceResults() {
+//        return driverRaceResults;
+//    }
+//
+//    public void setDriverRaceResults(Set<DriverRaceResultReadModel> driverRaceResults) {
+//        this.driverRaceResults = driverRaceResults;
+//    }
+
+
+    public int getId() {
+        return id;
     }
 
-    public void setDriverRaceResults(Set<DriverRaceResultReadModel> driverRaceResults) {
-        this.driverRaceResults = driverRaceResults;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
