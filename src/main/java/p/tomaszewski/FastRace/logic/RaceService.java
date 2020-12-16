@@ -30,7 +30,6 @@ public class RaceService {
     }
 
     public Optional<Race> findById(int id){
-        int d = id;
         return repository.findById(id);
     }
 }

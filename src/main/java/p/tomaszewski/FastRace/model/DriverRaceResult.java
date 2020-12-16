@@ -19,16 +19,8 @@ public class DriverRaceResult {
     @JoinColumn(name = "race_id")
     private Race race;
 
-
-
     public DriverRaceResult() {
     }
-
-//    public DriverRaceResult(int score, Driver driver, Race race) {
-//        this.score = score;
-//        this.driver = driver;
-//        this.race = race;
-//    }
 
     public Driver getDriver() {
         return driver;

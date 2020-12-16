@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 public class DriverReadModel {
+    private int id;
     @NotNull
     private String firstName;
     private String lastName;
@@ -20,6 +21,7 @@ public class DriverReadModel {
         lastName = source.getLastName();
         team = source.getTeam();
         car = source.getCar();
+        id = source.getId();
 //        overview = source.getOverview();
 //        source.getDriverRaceResults().stream()
 //                .sorted(Comparator.comparing(DriverRaceResult::getTheBestTime))
@@ -28,6 +30,14 @@ public class DriverReadModel {
 //                .collect(Collectors
 //                        .toSet());
 
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Set<DriverRaceResultReadModel> getDriverRaceResults() {

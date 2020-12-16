@@ -13,7 +13,6 @@ import p.tomaszewski.FastRace.logic.DriverService;
 import p.tomaszewski.FastRace.logic.RaceService;
 import p.tomaszewski.FastRace.model.DriverRaceResult;
 import p.tomaszewski.FastRace.model.DriverRaceResultRepository;
-import p.tomaszewski.FastRace.model.Race;
 import p.tomaszewski.FastRace.model.projection.DriverRaceResultWriteModel;
 import p.tomaszewski.FastRace.model.projection.DriverReadModel;
 import p.tomaszewski.FastRace.model.projection.RaceReadModel;
@@ -55,7 +54,14 @@ public class DriverRaceResultController {
         if (bindingResult.hasErrors()) {
             return "addScore";
         }
-        current.setRace2(raceService.findById(current.getRace()).get());
+
+        /*
+        Zamiana pobranego numeru Id na obiekt mu odpowiadający
+        RaceId -> Race
+        DriverId -> Driver
+         */
+        current.setRaceObject(raceService.findById(current.getRace()).get());
+        current.setDriverObject(driverService.findById(current.getDriver()).get());
         service.createDriverRaceResultService(current);
         model.addAttribute("driverraceresult", new DriverRaceResultWriteModel());
         return "addScore";

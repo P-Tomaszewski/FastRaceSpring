@@ -5,12 +5,9 @@ import p.tomaszewski.FastRace.enums.Surface;
 import p.tomaszewski.FastRace.model.Driver;
 import p.tomaszewski.FastRace.model.Race;
 
-import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class RaceWriteModel {
     private String name;

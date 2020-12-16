@@ -25,9 +25,9 @@
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Add data </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="addRace.html">Add race</a></li>
-                        <li><a class="dropdown-item" href="addDriver.html">Add driver</a></li>
-                        <li><a class="dropdown-item" href="addScore.html">Add score</a></li>
+                        <li><a class="dropdown-item" href="addRace.html" th:href="@{/addRace}">Add race</a></li>
+                        <li><a class="dropdown-item" href="addDriver.html" th:href="@{/addDriver}">Add driver</a></li>
+                        <li><a class="dropdown-item" href="addScore.html" th:href="@{/addScore}">Add score</a></li>
                         </li>
                     </ul>
                 </li>
@@ -35,7 +35,7 @@
                     <a class="nav-link" href="result.html">Result</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="top.html">Top3</a>
+                    <a class="nav-link" href="top.html" th:href="@{/top}">Top3</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contact.html">Contact</a>
@@ -70,11 +70,11 @@
                 <label for="driver">Driver</label>
                 <select name="Driver" id="driver" class="form-control">
 <!--                    &lt;!&ndash;/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/&ndash;&gt;-->
-<!--                    <dl th:each="driver : ${drivers}">-->
-<!--                        <dd>-->
-<!--                            <option th:each="driver : ${driver}" th:value="${driver}" th:text="${driver.firstName}" ></option>-->
-<!--                        </dd>-->
-<!--                    </dl>-->
+                    <dl th:each="driver : ${drivers}">
+                        <dd>
+                            <option th:each="driver : ${driver}" th:value="${driver.id}" th:text="${driver.firstName}" ></option>
+                        </dd>
+                    </dl>
                 </select>
             </div>
             <div class="md-form">

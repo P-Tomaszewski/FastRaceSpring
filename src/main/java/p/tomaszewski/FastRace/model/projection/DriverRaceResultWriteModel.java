@@ -7,9 +7,18 @@ import p.tomaszewski.FastRace.model.Race;
 //mapuje tylko score
 public class DriverRaceResultWriteModel {
     private int score;
-    private Driver driver;
-    private Race race2;
+    private Driver driverObject;
+    private int driver;
+    private Race raceObject;
     private int race;
+
+    public Driver getDriverObject() {
+        return driverObject;
+    }
+
+    public void setDriverObject(Driver driverObject) {
+        this.driverObject = driverObject;
+    }
 
     public int getRace() {
         return race;
@@ -19,20 +28,20 @@ public class DriverRaceResultWriteModel {
         this.race = raceId;
     }
 
-    public Driver getDriver() {
+    public int getDriver() {
         return driver;
     }
 
-    public void setDriver(Driver driver) {
+    public void setDriver(int driver) {
         this.driver = driver;
     }
 
-    public Race getRace2() {
-        return race2;
+    public Race getRaceObject() {
+        return raceObject;
     }
 
-    public void setRace2(Race race2) {
-        this.race2 = race2;
+    public void setRaceObject(Race raceObject) {
+        this.raceObject = raceObject;
     }
 
     public int getScore() {
@@ -49,9 +58,8 @@ public class DriverRaceResultWriteModel {
 
     public DriverRaceResult toDriverRaceResult(){
         var result = new DriverRaceResult();
-//        result.setDriver(driver);
-
-        result.setRace(race2);
+        result.setDriver(driverObject);
+        result.setRace(raceObject);
         result.setScore(score);
         return result;
     }
