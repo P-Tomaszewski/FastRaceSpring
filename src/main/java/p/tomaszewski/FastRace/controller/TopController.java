@@ -4,12 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import p.tomaszewski.FastRace.logic.DriverService;
 import p.tomaszewski.FastRace.model.Driver;
 import p.tomaszewski.FastRace.model.projection.DriverReadModel;
-import p.tomaszewski.FastRace.model.projection.DriverWriteModel;
 
 import java.util.Comparator;
 import java.util.List;

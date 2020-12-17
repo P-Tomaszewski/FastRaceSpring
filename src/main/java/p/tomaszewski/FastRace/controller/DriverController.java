@@ -48,7 +48,6 @@ public class DriverController {
         }
         service.createDriver(current);
         model.addAttribute("driver", new DriverWriteModel());
-//        model.addAttribute("message", "dodano kierowce");
         return "addDriver";
 
 

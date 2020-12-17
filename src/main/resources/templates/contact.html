@@ -46,6 +46,8 @@
 
 </head>
 <body>
+<!--/*@thymesVar id="contact" type="p.tomaszewski.FastRace.model.Contact"*/-->
+<form action="#" method="post" th:action="@{/contact}" th:object="${contact}">
 <div class="container features">
     <section class="mb-4">
         <h2 class="h1-responsive font-weight-bold text-center my-4">Contact us</h2>
@@ -58,39 +60,51 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="md-form mb-0">
-                                <input type="text" id="name" name="name" class="form-control">
                                 <label for="name" class="">Your name</label>
+                                <input type="text" th:field="*{name}" id="name" name="name" class="form-control">
+                                <label style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" >Name Error</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="md-form mb-0">
-                                <input type="text" id="email" name="email" class="form-control">
                                 <label for="email" class="">Your email</label>
+                                <input type="email"  th:field="*{email}" id="email" name="email" class="form-control">
+                                <label style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Name Error</label>
+
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="md-form mb-0">
-                                <input type="text" id="subject" name="subject" class="form-control">
                                 <label for="subject" class="">Subject</label>
+                                <input type="text" th:field="*{subject}" id="subject" name="subject" class="form-control">
+                                <label style="color: red" th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}">Name Error</label>
+
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="md-form">
-                                <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
+                                <label for="subject" class="">Message</label>
+                                <textarea type="text" th:field="*{message}" id="message" name="message"
+                                          rows="2" class="form-control md-textarea"></textarea>
+                                <label style="color: red" th:if="${#fields.hasErrors('message')}" th:errors="*{message}">Name Error</label>
                             </div>
 
                         </div>
                     </div>
                 </form>
 
-                <div class="btn btn-outline-secondary btn-lg">
-                    <a onclick="">Send</a>
+<!--                <div class="btn btn-outline-secondary btn-lg">-->
+<!--&lt;!&ndash;                    <a onclick="">Send</a>&ndash;&gt;-->
 <!--                    <a onclick="document.getElementById('contact-form').submit();">Send</a>-->
-                </div>
+                    <button class="btn btn-outline-secondary btn-lg"
+                            onclick="">Send
+                    </button>
+
+<!--                </div>-->
                 <div class="status"></div>
             </div>
             <div class="col-md-3 text-center">
@@ -125,7 +139,9 @@
 <footer class="page-footer">
         <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
     </div>
+
 </footer>
+</form>
 </body>
 
 </html>

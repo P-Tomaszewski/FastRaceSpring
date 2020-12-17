@@ -71,9 +71,9 @@
     <!--/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/-->
     <dl th:each="driver : ${drivers}">
         <dd>
-            <tr>
+            <tr th:if="${driverStat.count <= 3}">
 <!--                ${driver.lastName} ${driver.team} ${driver.car}"-->
-                <td th:each="driver,iterStat : ${driver}" th:text="${driverStat.count}"></td>
+                <td th:each="driver,iterStat : ${driver}"  th:text="${driverStat.count}"></td>
                 <td th:each="driver : ${driver}" th:text="${driver.firstName}"></td>
                 <td th:each="driver : ${driver}" th:text="${driver.lastName}"></td>
                 <td th:each="driver : ${driver}" th:text="${driver.team}"></td>
