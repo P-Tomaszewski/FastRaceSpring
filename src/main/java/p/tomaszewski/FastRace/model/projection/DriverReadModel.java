@@ -1,6 +1,7 @@
 package p.tomaszewski.FastRace.model.projection;
 
 import p.tomaszewski.FastRace.model.Driver;
+import p.tomaszewski.FastRace.model.DriverRaceResult;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ public class DriverReadModel {
     private String team;
     private String car;
     private LocalDateTime overview;
-    private Set<DriverRaceResultReadModel> driverRaceResults;
+    private Set<DriverRaceResult> driverRaceResults;
 
     public DriverReadModel(Driver source) {
         firstName = source.getFirstName();
@@ -22,6 +23,7 @@ public class DriverReadModel {
         team = source.getTeam();
         car = source.getCar();
         id = source.getId();
+        driverRaceResults = source.getDriverRaceResults();
 //        overview = source.getOverview();
 //        source.getDriverRaceResults().stream()
 //                .sorted(Comparator.comparing(DriverRaceResult::getTheBestTime))
@@ -40,11 +42,11 @@ public class DriverReadModel {
         this.id = id;
     }
 
-    public Set<DriverRaceResultReadModel> getDriverRaceResults() {
+    public Set<DriverRaceResult> getDriverRaceResults() {
         return driverRaceResults;
     }
 
-    public void setDriverRaceResults(Set<DriverRaceResultReadModel> driverRaceResults) {
+    public void setDriverRaceResults(Set<DriverRaceResult> driverRaceResults) {
         this.driverRaceResults = driverRaceResults;
     }
 

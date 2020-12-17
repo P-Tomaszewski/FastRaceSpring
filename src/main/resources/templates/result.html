@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/index.css}" rel="stylesheet"/>
     <nav class="navbar navbar-expand-md">
         <a class="navbar-brand" href="home.html">
             <img th:src="@{/img/logo7.png}"/>
@@ -45,67 +45,91 @@
     </nav>
 </head>
 <body>
+<main>
+    <!--/*@thymesVar id="result2" type="p.tomaszewski.FastRace.model.DriverResult"*/-->
+    <form action="#" method="post" th:action="@{/result}" th:object="${result2}">
+<!--                <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>-->
+        <div class="container featuresRace">
+            <div class="md-form">
+                <label for="driver">driver</label>
+                <select name="Driver" id="driver" class="form-control">
+                    <!--                    &lt;!&ndash;/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/&ndash;&gt;-->
+                    <dl th:each="driver : ${drivers}">
+                        <dd>
+                            <option th:each="driver : ${driver}" th:value="${driver.id}" th:text="${driver.firstName}"></option>
+                        </dd>
+                    </dl>
+                    </dl>
+                </select>
+            </div>
 
-<div class="container featuresRace">
-    <div class="md-form">
-        <label for="driver">Driver</label>
-        <select name="Driver" id="driver" class="form-control">
-            <!--Kierowca będzie pobierany z bazy i wyświetlany do wyboru (nazwa+data)-->
-            <option> Adam Jarkiewicz </option>
+            <button id="showScore" class="btn btn-outline-secondary btn-lg">Show score
+            </button>
 
-            <option> Grzegorz Ludwicki </option>
+            <h1 id="feedbackDriver"></h1>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Race</th>
+                    <th scope="col">Score</th>
+                </tr>
+                </thead>
+                <tbody>
 
-            <option> Paweł Jurecki </option>
-        </select>
-    </div>
+                <dl th:each="result : ${results}">
+                    <!--                    th:if="${result.driver != 0}"-->
+                    <dd>
+                        <tr th:if="${result2.driver == result.driver}">
+                            <td th:each="result,iterStat : ${result}" th:text="${resultStat.count}"></td>
+                            <td th:each="race : ${races}" th:if="${result.race == race.id}" th:text="${race.name}"></td>
+                            <td th:each="result : ${result}" th:text="${result.score}"></td>
+                            <!--                            <td th:each="driver : ${driver}" th:text="${driver.team}"></td>-->
+                            <!--                            <td th:each="driver : ${driver}" th:text="${driver.car}"></td>-->
+                            <!--                            <td th:each="driver : ${driver}" th:text="000"></td>-->
+                        </tr>
+                    </dd>
+                </dl>
 
-    <button id="showScore" class="btn btn-outline-secondary btn-lg"
-            onclick="setDriver()">Show score</button>
 
-    <h1 id="feedbackDriver"></h1>
-    <table class="table table-dark">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Race</th>
-            <th scope="col">Score</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>AMZ Motorsport Team</td>
-            <td>22</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>TurboWorks Drift Team</td>
-            <td>11</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>STW</td>
-            <td>18</td>
-        </tr>
-        </tbody>
-    </table>
-</div>
+                <!--                <tr>-->
+                <!--                    <th scope="row">1</th>-->
+                <!--                    <td>AMZ Motorsport Team</td>-->
+                <!--                    <td>22</td>-->
+                <!--                </tr>-->
+                <!--                <tr>-->
+                <!--                    <th scope="row">2</th>-->
+                <!--                    <td>TurboWorks Drift Team</td>-->
+                <!--                    <td>11</td>-->
+                <!--                </tr>-->
+                <!--                <tr>-->
+                <!--                    <th scope="row">3</th>-->
+                <!--                    <td>STW</td>-->
+                <!--                    <td>18</td>-->
+                <!--                </tr>-->
+                </tbody>
+            </table>
+        </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}"></script>
-<script type="text/javascript" th:src="@{/js/main.js}"></script>
-<script type="text/javascript" th:src="@{/js/setDriver.js}"></script>
-<footer class="page-footer">
-    <div class="container">
-        <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
-    </div>
-</footer>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}"></script>
+        <script type="text/javascript" th:src="@{/js/main.js}"></script>
+<!--        <script type="text/javascript" th:src="@{/js/setDriver.js}"></script>-->
+        <footer class="page-footer">
+            <div class="container">
+                <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
+            </div>
+        </footer>
+    </form>
+</main>
 </body>
 
 </html>

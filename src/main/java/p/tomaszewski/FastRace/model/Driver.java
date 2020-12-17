@@ -43,7 +43,6 @@ public class Driver {
 
     public Driver(@NotNull String firstName, String lastName, String team,
                   String car, LocalDateTime overview) {
-
         this.firstName = firstName;
         this.lastName = lastName;
         this.team = team;

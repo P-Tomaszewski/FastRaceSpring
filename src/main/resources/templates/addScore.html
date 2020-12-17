@@ -69,10 +69,10 @@
             <div class="md-form">
                 <label for="driver">Driver</label>
                 <select name="Driver" id="driver" class="form-control">
-<!--                    &lt;!&ndash;/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/&ndash;&gt;-->
+                    <!--                    &lt;!&ndash;/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/&ndash;&gt;-->
                     <dl th:each="driver : ${drivers}">
                         <dd>
-                            <option th:each="driver : ${driver}" th:value="${driver.id}" th:text="${driver.firstName}" ></option>
+                            <option th:each="driver : ${driver}" th:value="${driver.id}" th:text="${driver.firstName}"></option>
                         </dd>
                     </dl>
                 </select>

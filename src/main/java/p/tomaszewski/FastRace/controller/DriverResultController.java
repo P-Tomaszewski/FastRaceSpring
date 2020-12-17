@@ -1,46 +1,71 @@
 package p.tomaszewski.FastRace.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import p.tomaszewski.FastRace.logic.DriverRaceResultService;
 import p.tomaszewski.FastRace.logic.DriverService;
+import p.tomaszewski.FastRace.logic.RaceService;
 import p.tomaszewski.FastRace.model.Driver;
-import p.tomaszewski.FastRace.model.projection.DriverReadModel;
-import p.tomaszewski.FastRace.model.projection.DriverWriteModel;
+import p.tomaszewski.FastRace.model.DriverRaceResult;
+import p.tomaszewski.FastRace.model.DriverRaceResultRepository;
+import p.tomaszewski.FastRace.model.DriverResult;
+import p.tomaszewski.FastRace.model.projection.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 @RequestMapping("/result")
 public class DriverResultController {
     private final DriverService service;
+    private final RaceService raceService;
+    private final DriverRaceResultService driverRaceResultService;
 
-    public DriverResultController(DriverService service) {
+
+    public DriverResultController(DriverService service, RaceService raceService, DriverRaceResultService driverRaceResultService) {
         this.service = service;
+        this.raceService = raceService;
+        this.driverRaceResultService = driverRaceResultService;
     }
 
 
-    @GetMapping
-    String showTopDrivers(Model model){
-        var drivers = new Driver();
-        model.addAttribute("driver", drivers);
-        return "top";
+    @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
+    String showResultToDriver(Model model){
+        model.getAttribute("result2");
+        var drivers = new DriverResult();
+        model.addAttribute("result2", drivers);
+        return "result";
     }
 
-    @PostMapping
-    String addProject(@ModelAttribute("driver") DriverWriteModel current, Model model){
-        service.createDriver(current);
-        model.addAttribute("driver", new DriverWriteModel());
-//        model.addAttribute("message", "dodano kierowce");
-        return "top";
+
+
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    String addProject(@Valid @ModelAttribute("result2") DriverResult currency){
+        int i = currency.getDriver();
+//      Driver driver =  service.findById(currency.toResult().getDriver()).get();
+//      driver.getDriverRaceResults().stream().
+        return "result";
     }
 
     @ModelAttribute("drivers")
     List<DriverReadModel> getDrivers(){
         return service.readAll();
+    }
+
+    @ModelAttribute("races")
+    List<RaceReadModel> getRaces(){
+        return raceService.readAll();
+    }
+
+    @ModelAttribute("results")
+    List<DriverRaceResultReadModel> getResults(){
+        return driverRaceResultService.readAll();
     }
 
 

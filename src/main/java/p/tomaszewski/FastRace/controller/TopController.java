@@ -30,13 +30,13 @@ public class TopController {
         return "top";
     }
 
-    @PostMapping
-    String addProject(@ModelAttribute("driver") DriverWriteModel current, Model model){
-        service.createDriver(current);
-        model.addAttribute("driver", new DriverWriteModel());
-//        model.addAttribute("message", "dodano kierowce");
-        return "top";
-    }
+//    @PostMapping
+//    String addProject(@ModelAttribute("driver") DriverWriteModel current, Model model){
+//        service.createDriver(current);
+//        model.addAttribute("driver", new DriverWriteModel());
+////        model.addAttribute("message", "dodano kierowce");
+//        return "top";
+//    }
 
     @ModelAttribute("drivers")
     List<DriverReadModel> getDrivers(){

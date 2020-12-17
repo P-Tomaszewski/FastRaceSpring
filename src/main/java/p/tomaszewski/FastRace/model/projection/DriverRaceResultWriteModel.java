@@ -4,7 +4,6 @@ import p.tomaszewski.FastRace.model.Driver;
 import p.tomaszewski.FastRace.model.DriverRaceResult;
 import p.tomaszewski.FastRace.model.Race;
 
-//mapuje tylko score
 public class DriverRaceResultWriteModel {
     private int score;
     private Driver driverObject;
