@@ -3,13 +3,13 @@ package p.tomaszewski.FastRace.model.projection;
 public class ContactReadModel {
     private String name;
     private String email;
-    private String Subject;
+    private String subject;
     private String message;
 
     public ContactReadModel(String name, String email, String subject, String message) {
         this.name = name;
         this.email = email;
-        this.Subject = subject;
+        this.subject = subject;
         this.message = message;
     }
 
@@ -30,11 +30,11 @@ public class ContactReadModel {
     }
 
     public String getSubject() {
-        return Subject;
+        return subject;
     }
 
     public void setSubject(String subject) {
-        Subject = subject;
+        this.subject = subject;
     }
 
     public String getMessage() {

@@ -1,11 +1,9 @@
 package p.tomaszewski.FastRace.model.projection;
 
-import p.tomaszewski.FastRace.model.DriverResult;
-
 public class ContactWriteModel {
     private String name;
     private String email;
-    private String Subject;
+    private String subject;
     private String message;
 
     public String getName() {
@@ -25,11 +23,11 @@ public class ContactWriteModel {
     }
 
     public String getSubject() {
-        return Subject;
+        return subject;
     }
 
     public void setSubject(String subject) {
-        Subject = subject;
+        this.subject = subject;
     }
 
     public String getMessage() {
