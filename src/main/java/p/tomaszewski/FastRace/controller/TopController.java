@@ -11,6 +11,7 @@ import p.tomaszewski.FastRace.model.Driver;
 import p.tomaszewski.FastRace.model.projection.DriverReadModel;
 import p.tomaszewski.FastRace.model.projection.DriverWriteModel;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Controller
@@ -26,7 +27,7 @@ public class TopController {
     @GetMapping
     String showTopDrivers(Model model){
         var drivers = new Driver();
-        model.addAttribute("driver", drivers);
+        model.addAttribute("driver2", drivers);
         return "top";
     }
 
@@ -40,7 +41,9 @@ public class TopController {
 
     @ModelAttribute("drivers")
     List<DriverReadModel> getDrivers(){
-        return service.readAll();
+        List<DriverReadModel> list = service.readAll();
+        list.sort(Comparator.comparingInt(DriverReadModel::getDriverRaceResultsScoreSum).reversed());
+        return list;
     }
 
 

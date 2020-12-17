@@ -6,6 +6,8 @@ import p.tomaszewski.FastRace.model.DriverRaceResult;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class DriverReadModel {
     private int id;
@@ -44,6 +46,10 @@ public class DriverReadModel {
 
     public Set<DriverRaceResult> getDriverRaceResults() {
         return driverRaceResults;
+    }
+
+    public int getDriverRaceResultsScoreSum() {
+        return driverRaceResults.stream().mapToInt(DriverRaceResult::getScore).sum();
     }
 
     public void setDriverRaceResults(Set<DriverRaceResult> driverRaceResults) {

@@ -45,7 +45,10 @@
     </nav>
 </head>
 <body>
+
 <main>
+    <form action="#" method="post" th:action="@{/addDriver}" th:object="${driver2}">
+        <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>
 <h1 class='mb-3'>Top3 drivers</h1>
 <table id="dtBasicExample" class="table" width="100%">
     <thead>
@@ -75,7 +78,7 @@
                 <td th:each="driver : ${driver}" th:text="${driver.lastName}"></td>
                 <td th:each="driver : ${driver}" th:text="${driver.team}"></td>
                 <td th:each="driver : ${driver}" th:text="${driver.car}"></td>
-                <td th:each="driver : ${driver}" th:text="000"></td>
+                <td th:each="driver : ${driver}" th:text="${driver.getDriverRaceResultsScoreSum()}"></td>
             </tr>
         </dd>
     </dl>
@@ -126,6 +129,7 @@
         <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
     </div>
 </footer>
+    </form>
 </main>
 </body>
 
