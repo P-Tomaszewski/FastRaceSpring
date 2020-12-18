@@ -6,6 +6,8 @@ import p.tomaszewski.FastRace.enums.Surface;
 import javax.persistence.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -16,7 +18,9 @@ public class Race {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
+    @NotEmpty
     private String name;
+    @NotEmpty
     private String surface;
     private LocalDateTime data;
 

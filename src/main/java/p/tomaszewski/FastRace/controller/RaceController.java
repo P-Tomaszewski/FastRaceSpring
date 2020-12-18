@@ -39,6 +39,19 @@ public class RaceController {
         return "addRace";
     }
 
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    String addRace(@Valid
+                   @ModelAttribute("race") RaceWriteModel current,
+                   BindingResult bindingResult,
+                   Model model){
+        if(bindingResult.hasErrors()){
+            return "addRace";
+        }
+        service.createRace(current);
+        model.addAttribute("race", new RaceWriteModel());
+        return "addRace";
+    }
+
     @ResponseBody
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<Race> createRace(@RequestBody @Valid Race toCreate){
@@ -53,19 +66,7 @@ public class RaceController {
         return ResponseEntity.ok(repository.findAll());
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    String addRace(@Valid
-                      @ModelAttribute("race") RaceWriteModel current,
-                      BindingResult bindingResult,
-                      Model model){
-        if(bindingResult.hasErrors()){
-            return "addRace";
-        }
-        service.createRace(current);
-        model.addAttribute("race", new RaceWriteModel());
-//        model.addAttribute("message", "dodano kierowce");
-        return "addRace";
-    }
+
 
 //    @ResponseBody
 //    @GetMapping("/{id}" produces = MediaType.APPLICATION_JSON_VALUE)

@@ -33,7 +33,6 @@ public class DriverController {
     @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
     String showProjects(Model model){
         var driverToEdit = new Driver();
-        driverToEdit.setFirstName("test");
         model.addAttribute("driver", driverToEdit);
         return "addDriver";
     }

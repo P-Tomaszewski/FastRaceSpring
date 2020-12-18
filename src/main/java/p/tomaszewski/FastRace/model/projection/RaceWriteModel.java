@@ -2,17 +2,20 @@ package p.tomaszewski.FastRace.model.projection;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import p.tomaszewski.FastRace.enums.Surface;
-import p.tomaszewski.FastRace.model.Driver;
 import p.tomaszewski.FastRace.model.Race;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RaceWriteModel {
+    @NotEmpty
     private String name;
     private Surface surface;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @NotNull
     private LocalDateTime data;
     private List<DriverRaceResultWriteModel> driverRaceResults = new ArrayList<>();
 

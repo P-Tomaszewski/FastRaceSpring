@@ -44,53 +44,55 @@
 </head>
 <body>
 <main>
-<!--/*@thymesVar id="race" type="p.tomaszewski.FastRace.model.Race"*/-->
-<form action="#" method="post" th:action="@{/addRace}" th:object="${race}">
-    <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>
+    <!--/*@thymesVar id="race" type="p.tomaszewski.FastRace.model.Race"*/-->
+    <form action="#" method="post" th:action="@{/addRace}" th:object="${race}">
+        <div class="container featuresRace">
+            <h1>Add Race</h1>
+            <div class="md-form">
+                <label for="racename">Race name</label>
+                <input type="text" th:field="*{name}" id="racename" class="form-control" onblur="checkRaceName()">
+                <label style="color: red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</label>
+                <div id="feedbackRacename"></div>
+            </div>
+            <div class="md-form">
+                <label for="surface">Surface</label>
+                <!--        <input type="text" th:field="*{surface}" id="surface" class="form-control" onblur="checkRaceName()">-->
+                <select name="Surface" id="surface" class="form-control">
+                    <option th:each="surface : ${T(p.tomaszewski.FastRace.enums.Surface).values()}"
+                            th:value="${surface}" th:text="${surface.displayValue}"></option>
+                </select>
+            </div>
+            <div class="md-form">
+                <label for="date">data</label>
+                <input type=datetime-local th:field="*{data}" id="date" class="form-control">
+                <label style="color: red" th:if="${#fields.hasErrors('data')}" th:errors="*{data}">Name Error</label>
+                <div id="feedbackDate"></div>
+            </div>
 
-<div class="container featuresRace">
-    <h1>Add Race</h1>
-    <div class="md-form">
-        <label for="racename">Race name</label>
-        <input type="text" th:field="*{name}" id="racename" class="form-control" onblur="checkRaceName()">
-        <div id="feedbackRacename"></div>
-    </div>
-    <div class="md-form">
-        <label for="surface">Surface</label>
-<!--        <input type="text" th:field="*{surface}" id="surface" class="form-control" onblur="checkRaceName()">-->
-        <select name="Surface" id="surface" class="form-control">
-            <option th:each="surface : ${T(p.tomaszewski.FastRace.enums.Surface).values()}"
-                    th:value="${surface}" th:text="${surface.displayValue}"></option>
-        </select>
-    </div>
-    <div class="md-form">
-        <label for="date">data</label>
-        <input type=datetime-local th:field="*{data}" id="date" class="form-control">
-        <div id="feedbackDate"></div>
-    </div>
+            <button id="addRace" class="btn btn-outline-secondary btn-lg"
+                    onclick="checkRaceName()">Add race
+            </button>
+        </div>
 
-    <button id="addRace" class="btn btn-outline-secondary btn-lg"
-            onclick="checkRaceName()">Add race
-    </button>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
-</script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}"></script>
-<script type="text/javascript" th:src="@{/js/validateAddDriver.js}"></script>
-<script type="text/javascript" th:src="@{/js/main.js}"></script>
-<footer class="page-footer">
-    <div class="container">
-        <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
-    </div>
-</footer>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous">
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}"></script>
+        <script type="text/javascript" th:src="@{/js/validateAddDriver.js}"></script>
+        <script type="text/javascript" th:src="@{/js/main.js}"></script>
+        <footer class="page-footer">
+            <div class="container">
+                <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>
+            </div>
+        </footer>
     </form>
-    </main>
+</main>
 </body>
 
 </html>

@@ -1,9 +1,8 @@
 package p.tomaszewski.FastRace.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -14,13 +13,13 @@ public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
-    @NotNull
+    @NotEmpty
     public String firstName;
-    @NotNull
+    @NotEmpty
     private String lastName;
-    @NotNull
+    @NotEmpty
     private String team;
-    @NotNull
+    @NotEmpty
     private String car;
     private LocalDateTime overview;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "driver")
