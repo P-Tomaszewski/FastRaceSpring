@@ -90,9 +90,6 @@ public class DriverRaceResultController {
         logger.warn("Exposing all tasks");
         return ResponseEntity.ok(repository.findAll());
     }
-
-
-
 //    @ResponseBody
 //    @GetMapping("/{id}")
 //    ResponseEntity<DriverRaceResult> readDriverRaceResult(@PathVariable int id) {

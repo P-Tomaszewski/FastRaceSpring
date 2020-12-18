@@ -28,11 +28,6 @@ public class HomeController {
 
     @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
     String showResultToDriver(Model model){
-
         return "home";
     }
-
-
-
-
 }

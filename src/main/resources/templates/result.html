@@ -48,7 +48,7 @@
 <main>
     <!--/*@thymesVar id="result2" type="p.tomaszewski.FastRace.model.DriverResult"*/-->
     <form action="#" method="post" th:action="@{/result}" th:object="${result2}">
-<!--                <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>-->
+        <!--                <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>-->
         <div class="container featuresRace">
             <div class="md-form">
                 <label for="driver">Driver</label>
@@ -58,7 +58,8 @@
                     <label style="color: red" th:if="${#fields.hasAnyErrors()}" th:errors="*{all}">Name Error</label>
                     <dl th:each="driver : ${drivers}">
                         <dd>
-                            <option th:each="driver : ${driver}" th:value="${driver.id}" th:text="${driver.firstName}"></option>
+                            <option th:each="driver : ${driver}" th:value="${driver.id}"
+                                    th:text="${driver.firstName}"></option>
                         </dd>
                     </dl>
                     </dl>
@@ -101,7 +102,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}"></script>
         <script type="text/javascript" th:src="@{/js/main.js}"></script>
-<!--        <script type="text/javascript" th:src="@{/js/setDriver.js}"></script>-->
+        <!--        <script type="text/javascript" th:src="@{/js/setDriver.js}"></script>-->
         <footer class="page-footer">
             <div class="container">
                 <div class="footer-copyright text-center">© 2020 Copyright: P_Tomaszewski</div>

@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import p.tomaszewski.FastRace.logic.DriverService;
-import p.tomaszewski.FastRace.logic.RaceService;
 import p.tomaszewski.FastRace.model.Driver;
 import p.tomaszewski.FastRace.model.DriverRepository;
 import p.tomaszewski.FastRace.model.projection.DriverWriteModel;
@@ -48,8 +47,6 @@ public class DriverController {
         service.createDriver(current);
         model.addAttribute("driver", new DriverWriteModel());
         return "addDriver";
-
-
     }
 
     @ResponseBody

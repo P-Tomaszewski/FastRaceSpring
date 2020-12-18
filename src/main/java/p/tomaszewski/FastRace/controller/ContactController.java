@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import p.tomaszewski.FastRace.model.Contact;
-import p.tomaszewski.FastRace.model.DriverResult;
 
 import javax.validation.Valid;
 
@@ -17,7 +16,6 @@ public class ContactController {
     public ContactController() {
     }
 
-
     @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
     String showContact(Model model) {
         model.getAttribute("contact");
@@ -26,16 +24,11 @@ public class ContactController {
         return "contact";
     }
 
-
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     String addProject(@Valid @ModelAttribute("contact") Contact contact, BindingResult bindingResult) {
-//        int i = currency.getDriver();
-//      Driver driver =  service.findById(currency.toResult().getDriver()).get();
-//      driver.getDriverRaceResults().stream().
         if (bindingResult.hasErrors()) {
             return "contact";
         }
-
         return "redirect:/contact";
     }
 }

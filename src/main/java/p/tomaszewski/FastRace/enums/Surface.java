@@ -7,7 +7,7 @@ public enum Surface {
 
     private final String displayValue;
 
-    private Surface(String displayValue) {
+    Surface(String displayValue) {
         this.displayValue = displayValue;
     }
 
