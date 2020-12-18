@@ -1,7 +1,8 @@
 body {
+    background-image: url('../img/header-background.jpg');
     padding: 0;
     margin: 0;
-    background: #f2f6e9;
+    /*background: #f2f6e9;*/
 }
 /*--- navigation bar ---*/
 .navbar {
@@ -22,10 +23,10 @@ body {
     justify-content: flex-end;
 }
 .header {
-    background-image: url('../img/header-background.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
+    left: 50%;
 }
 
 .overlay {
@@ -71,7 +72,7 @@ body {
 .features {
     margin: 4em auto;
     padding: 1em;
-    position: relative;
+    position: center;
 }
 
 .feature-title {
@@ -101,7 +102,19 @@ body {
     margin-top: 20px;
 }
 
+.featuresRace .btn {
+    background-color: #D9A23F;
+    border: 1px solid #D9A23F;
+    color: #fff;
+    margin-top: 20px;
+}
+
 .features .btn:hover {
+    background-color: #333;
+    border: 1px solid #333;
+}
+
+.featuresRace .btn:hover {
     background-color: #333;
     border: 1px solid #333;
 }
@@ -120,4 +133,39 @@ body {
 .footer-copyright {
     color: #666;
     padding: 40px 0;
+}
+
+.navbar-nav li:hover > ul.dropdown-menu {
+    display: block;
+}
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top:-6px;
+}
+
+/* rotate caret on hover */
+.dropdown-menu > li > a:hover:after {
+    text-decoration: underline;
+    transform: rotate(-90deg);
+}
+
+.table {
+    border-collapse: collapse;
+}
+
+.md-form{
+    color: #000000;
+}
+
+.featuresRace{
+    margin: 1em auto;
+    padding: 1em;
+    position: center;
+}
+.mb-3 {
+    position: relative;
 }
