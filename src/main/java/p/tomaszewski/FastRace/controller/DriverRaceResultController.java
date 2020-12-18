@@ -60,11 +60,15 @@ public class DriverRaceResultController {
         RaceId -> Race
         DriverId -> Driver
          */
-        current.setRaceObject(raceService.findById(current.getRace()).get());
-        current.setDriverObject(driverService.findById(current.getDriver()).get());
-        service.createDriverRaceResultService(current);
-        model.addAttribute("driverraceresult", new DriverRaceResultWriteModel());
-        return "addScore";
+        if(!repository.checkValueExists(current.getRace(), current.getDriver())) {
+            current.setRaceObject(raceService.findById(current.getRace()).get());
+            current.setDriverObject(driverService.findById(current.getDriver()).get());
+            service.createDriverRaceResultService(current);
+            model.addAttribute("driverraceresult", new DriverRaceResultWriteModel());
+            return "redirect:/addScore";
+        } else {
+            return "redirect:/addScore";
+        }
     }
 
 //    @GetMapping(produces = MediaType.TEXT_HTML_VALUE)

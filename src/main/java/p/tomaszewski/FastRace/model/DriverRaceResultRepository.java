@@ -13,5 +13,7 @@ public interface DriverRaceResultRepository {
 
     boolean existsById(Integer id);
 
+    boolean checkValueExists(int idRace, int idDriver);
+
 }
 
