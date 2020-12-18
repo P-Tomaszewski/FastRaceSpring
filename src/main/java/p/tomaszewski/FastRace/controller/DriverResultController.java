@@ -13,6 +13,7 @@ import p.tomaszewski.FastRace.model.projection.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/result")
@@ -36,6 +37,7 @@ public class DriverResultController {
     String showResultToDriver(Model model){
         model.getAttribute("result2");
         var drivers = new DriverResult();
+        drivers.getDriverName();
         model.addAttribute("result2", drivers);
         return "result";
     }
@@ -43,10 +45,22 @@ public class DriverResultController {
 
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    String addProject(@Valid @ModelAttribute("result2") DriverResult currency, BindingResult bindingResult){
+    String getResult(@Valid @ModelAttribute("result2") DriverResult currency, BindingResult bindingResult, Model model){
+        DriverResult driverResult = new DriverResult();
+        Set<DriverRaceResult> driverRaceResultReadModelList;
+
         if (bindingResult.hasErrors()) {
             return "result";
         }
+
+//        if(!model.getAttribute("result2").equals(null)) {
+            driverResult.setDriver(currency.getDriver());
+            driverResult.setDriverName(service.findById(currency.getDriver()).get().firstName);
+            Driver driver = repository.findById(currency.getDriver()).get();
+            driverRaceResultReadModelList = driver.getDriverRaceResults();
+            driverResult.setRaceResults(driverRaceResultReadModelList);
+            model.addAttribute("resultByDriver", driverResult);
+//        }
 
         return "result";
     }

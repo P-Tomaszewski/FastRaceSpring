@@ -51,7 +51,9 @@
         <!--                <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>-->
         <div class="container featuresRace">
             <div class="md-form">
-                <label for="driver">Driver</label>
+                <h1>
+                    <label for="driver">Driver result</label>
+                </h1>
                 <select name="Driver" id="driver" class="form-control">
                     <!--                    &lt;!&ndash;/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/&ndash;&gt;-->
                     <option>Wybierz kierowce</option>
@@ -77,16 +79,30 @@
                     <th scope="col">Score</th>
                 </tr>
                 </thead>
-                <tbody>
-                <dl th:each="result : ${results}">
+                <tbody th:if="${ result2.driver != 0}">
+
+                <dl th:each="result : ${resultByDriver.getRaceResults()}">
                     <dd>
-                        <tr th:if="${result2.driver == result.driver}">
+                        <tr>
                             <td th:each="result,iterStat : ${result}" th:text="${resultStat.count}"></td>
-                            <td th:each="race : ${races}" th:if="${result.race == race.id}" th:text="${race.name}"></td>
+                            <td th:each="result : ${result}" th:text="${result.getRace().name}"></td>
                             <td th:each="result : ${result}" th:text="${result.score}"></td>
                         </tr>
                     </dd>
                 </dl>
+
+                <!--                <dl th:each="result : ${results}">-->
+                <!--                    <dd>-->
+                <!--                        <tr th:if="${result2.driver == result.driver}">-->
+                <!--                            <td th:each="result,iterStat : ${result}" th:text="${resultStat.count}"></td>-->
+                <!--                            <td th:each="race : ${races}" th:if="${result.race == race.id}" th:text="${race.name}"></td>-->
+                <!--                            <td th:each="result : ${result}" th:text="${result.score}"></td>-->
+                <!--                        </tr>-->
+                <!--                    </dd>-->
+                <!--                </dl>-->
+                <h3>
+                    <label th:if="${result2.driver != 0}" th:text="${resultByDriver.driverName}">Name Error</label>
+                </h3>
                 </tbody>
             </table>
         </div>
