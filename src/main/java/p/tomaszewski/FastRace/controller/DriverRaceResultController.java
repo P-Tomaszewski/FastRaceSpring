@@ -22,7 +22,7 @@ import java.net.URI;
 import java.util.List;
 
 @Controller
-@RequestMapping("/addScore")
+@RequestMapping()
 public class DriverRaceResultController {
     private static final Logger logger = LoggerFactory.getLogger(DriverRaceResultController.class);
     private final DriverRaceResultRepository repository;
@@ -39,18 +39,26 @@ public class DriverRaceResultController {
     }
 
 
-    @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping("/addScore")
     String showProjects(Model model){
         var driverRaceResult = new DriverRaceResult();
         model.addAttribute("driverraceresult", driverRaceResult);
         return "addScore";
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//    @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
+//    String showAlert(Model model){
+//        var driverRaceResult = new DriverRaceResult();
+////        model.addAttribute("driverraceresult", driverRaceResult);
+//        return "alertScore";
+//    }
+
+    @PostMapping("/addScore")
     String addRace(@Valid
                    @ModelAttribute("driverraceresult") DriverRaceResultWriteModel current,
                    BindingResult bindingResult,
                    Model model) {
+        model.addAttribute("score", 0);
         if (bindingResult.hasErrors()) {
             return "addScore";
         }
@@ -67,9 +75,20 @@ public class DriverRaceResultController {
             model.addAttribute("driverraceresult", new DriverRaceResultWriteModel());
             return "redirect:/addScore";
         } else {
-            return "redirect:/addScore";
+            model.addAttribute("score", 1);
+            return "re";
         }
     }
+
+//    @PatchMapping("/{id}") //zmiana
+//    public ResponseEntity<?> toggleDriver(@PathVariable int id){ //PathVariable = id z sciezki
+//        if(!repository.existsById(id)){
+//            return ResponseEntity.notFound().build();
+//        }
+////        repository.findById(id)
+////                .ifPresent(driver -> driver.setCar("Brabus"));
+//        return ResponseEntity.noContent().build();
+//    }
 
 //    @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
 //    String showRaces(Model model){

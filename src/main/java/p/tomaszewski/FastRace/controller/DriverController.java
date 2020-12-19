@@ -49,6 +49,8 @@ public class DriverController {
         return "addDriver";
     }
 
+
+
     @ResponseBody
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<Driver> creatDriver(@RequestBody @Valid Driver toCreate){
@@ -85,7 +87,7 @@ public class DriverController {
 //    @ResponseBody
 //    @Transactional
 //    @PatchMapping("/{id}") //zmiana
-//   public ResponseEntity<?> toggleDriver(@PathVariable int id){ //PathVariable = id z sciezki
+//    public ResponseEntity<?> toggleDriver(@PathVariable int id){ //PathVariable = id z sciezki
 //        if(!repository.existsById(id)){
 //            return ResponseEntity.notFound().build();
 //        }

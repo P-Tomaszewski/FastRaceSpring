@@ -2,7 +2,6 @@ body {
     background-image: url('../img/header-background.jpg');
     padding: 0;
     margin: 0;
-    /*background: #f2f6e9;*/
 }
 /*--- navigation bar ---*/
 .navbar {
@@ -23,10 +22,11 @@ body {
     justify-content: flex-end;
 }
 .header {
+    background-image: url('../img/header-background.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
-    left: 50%;
+    right: 50%;
 }
 
 .overlay {
@@ -72,7 +72,7 @@ body {
 .features {
     margin: 4em auto;
     padding: 1em;
-    position: center;
+    position: relative;
 }
 
 .feature-title {

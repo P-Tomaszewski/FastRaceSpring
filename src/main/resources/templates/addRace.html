@@ -69,8 +69,8 @@
                 <div id="feedbackDate"></div>
             </div>
 
-            <button type="button" id="addRace" class="btn btn-outline-secondary btn-lg"
-                    th:onclick="checkRaceName()">Add race
+            <button id="addRace" class="btn btn-outline-secondary btn-lg"
+                    onclick="checkRaceName()">Add race
             </button>
         </div>
 
@@ -83,7 +83,7 @@
                 crossorigin="anonymous">
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="../static/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+        <script src="../static/js/bootstrap.js" th:href="@{/static/js/bootstrap.js}"></script>
         <script type="text/javascript" th:src="@{/js/validateAddRace.js}"></script>
         <script type="text/javascript" th:src="@{/js/main.js}"></script>
         <footer class="page-footer">

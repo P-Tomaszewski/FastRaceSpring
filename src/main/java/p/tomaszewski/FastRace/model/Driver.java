@@ -13,7 +13,7 @@ public class Driver {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
-    @NotEmpty
+    @NotEmpty(message = "imie nie moze byc puste")
     public String firstName;
     @NotEmpty
     private String lastName;

@@ -11,4 +11,3 @@ if(hourNow> 18){
 }
 
 document.write('<h1>' + greeting.fontcolor('#D9DADA') + '<h1>');
-//#ADAB0B
