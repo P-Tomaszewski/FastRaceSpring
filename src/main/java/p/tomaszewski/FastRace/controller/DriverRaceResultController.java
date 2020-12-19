@@ -76,7 +76,7 @@ public class DriverRaceResultController {
             return "redirect:/addScore";
         } else {
             model.addAttribute("score", 1);
-            return "re";
+            return "/addScore";
         }
     }
 
