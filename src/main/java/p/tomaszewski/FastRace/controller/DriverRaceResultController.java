@@ -31,7 +31,9 @@ public class DriverRaceResultController {
     private final DriverService driverService;
 
 
-    public DriverRaceResultController(final DriverRaceResultRepository repository, DriverRaceResultService service, RaceService raceService, DriverService driverService) {
+    public DriverRaceResultController(final DriverRaceResultRepository repository,
+                                      DriverRaceResultService service,
+                                      RaceService raceService, DriverService driverService) {
         this.repository = repository;
         this.service = service;
         this.raceService = raceService;
@@ -46,19 +48,11 @@ public class DriverRaceResultController {
         return "addScore";
     }
 
-//    @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
-//    String showAlert(Model model){
-//        var driverRaceResult = new DriverRaceResult();
-////        model.addAttribute("driverraceresult", driverRaceResult);
-//        return "alertScore";
-//    }
-
     @PostMapping("/addScore")
     String addRace(@Valid
                    @ModelAttribute("driverraceresult") DriverRaceResultWriteModel current,
                    BindingResult bindingResult,
                    Model model) {
-        model.addAttribute("score", 0);
         if (bindingResult.hasErrors()) {
             return "addScore";
         }
@@ -75,7 +69,6 @@ public class DriverRaceResultController {
             model.addAttribute("driverraceresult", new DriverRaceResultWriteModel());
             return "redirect:/addScore";
         } else {
-            model.addAttribute("score", 1);
             return "/addScore";
         }
     }
@@ -96,19 +89,19 @@ public class DriverRaceResultController {
 //        return "addScore";
 //    }
 
-    @ResponseBody
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<DriverRaceResult> createDriverRaceResult(@RequestBody @Valid DriverRaceResult toCreate) {
-        DriverRaceResult result = repository.save(toCreate);
-        return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
-    }
-
-    @ResponseBody
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<List<DriverRaceResult>> readAllDriverRaceResult() {
-        logger.warn("Exposing all tasks");
-        return ResponseEntity.ok(repository.findAll());
-    }
+//    @ResponseBody
+//    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    ResponseEntity<DriverRaceResult> createDriverRaceResult(@RequestBody @Valid DriverRaceResult toCreate) {
+//        DriverRaceResult result = repository.save(toCreate);
+//        return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
+//    }
+//
+//    @ResponseBody
+//    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+//    ResponseEntity<List<DriverRaceResult>> readAllDriverRaceResult() {
+//        logger.warn("Exposing all tasks");
+//        return ResponseEntity.ok(repository.findAll());
+//    }
 //    @ResponseBody
 //    @GetMapping("/{id}")
 //    ResponseEntity<DriverRaceResult> readDriverRaceResult(@PathVariable int id) {

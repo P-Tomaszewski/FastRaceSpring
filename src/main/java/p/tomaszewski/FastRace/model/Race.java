@@ -24,7 +24,7 @@ public class Race {
     private String surface;
     private LocalDateTime data;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "race")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "race", orphanRemoval = true)
     private Set<DriverRaceResult> driverRaceResults;
 
     public Race() {

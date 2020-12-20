@@ -18,7 +18,7 @@ import java.net.URI;
 import java.util.List;
 
 @Controller
-@RequestMapping("/addDriver")
+@RequestMapping()
 public class DriverController {
     private static final Logger logger= LoggerFactory.getLogger(DriverController.class);
     private final DriverRepository repository;
@@ -29,14 +29,34 @@ public class DriverController {
         this.service = service;
     }
 
-    @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping("/addDriver")
     String showProjects(Model model){
         var driverToEdit = new Driver();
         model.addAttribute("driver", driverToEdit);
         return "addDriver";
     }
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @GetMapping("/deleteDriver")
+    public String deleteDriverGet(Model model){
+        model.addAttribute("drivers", repository.findAll());
+        return "deleteDriver";
+    }
+
+    @PostMapping("/deleteDriver")
+    public String deleteDriver(@Valid @RequestParam(value = "id", required = false) Integer id, Model model){
+        if(id != null) {
+            int k = id;
+        }
+        Driver driver = repository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        repository.deleteById(driver.getId());
+        model.addAttribute("drivers", repository.findAll());
+        return "deleteDriver";
+    }
+
+
+
+    @PostMapping("/addDriver")
     String addProject(@Valid
                       @ModelAttribute("driver") DriverWriteModel current,
                       BindingResult bindingResult,

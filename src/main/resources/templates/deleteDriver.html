@@ -55,25 +55,14 @@
 
     <!--To do poprawić wyświetlanie błędu walidacji-->
     <!--/*@thymesVar id="driverraceresult" type="p.tomaszewski.FastRace.model.DriverRaceResult"*/-->
-    <form action="#" method="post" th:action="@{/addScore}" th:object="${driverraceresult}">
-                <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>
+    <form action="@{/}" method="post" th:action="@{/deleteDriver}" th:object="${drivers}">
+        <p th:if="${#fields.hasAnyErrors()}" th:errors="*{all}"></p>
         <div class="container featuresRace">
             <h1>Add Score</h1>
             <div class="md-form">
-                <label for="race">Race</label>
-                <!--/*@thymesVar id="race" type="p.tomaszewski.FastRace.model.Race"*/-->
-                <select name="Race" id="race" class="form-control">
-                    <dl th:each="race : ${races}">
-                        <dd>
-                            <!--/*@thymesVar id="id" type="p.tomaszewski.FastRace.model.Race"*/-->
-                            <option th:each="race : ${race}" th:value="${race.id}" th:text="${race.name}"></option>
-                        </dd>
-                    </dl>
-                </select>
-            </div>
-            <div class="md-form">
                 <label for="driver">Driver</label>
-                <select name="Driver" id="driver" class="form-control">
+<!--                <input type="text" th:name="participant"/>-->
+                <select th:name="id" name="Driver"  id="driver" class="form-control"  >
                     <!--                    &lt;!&ndash;/*@thymesVar id="driver" type="p.tomaszewski.FastRace.model.Driver"*/&ndash;&gt;-->
                     <dl th:each="driver : ${drivers}">
                         <dd>
@@ -82,10 +71,10 @@
                     </dl>
                 </select>
             </div>
-            <div class="md-form">
-                <label for="score">Score</label>
-                <input type="number" th:field="*{score}" id="score" class="form-control">
-            </div>
+<!--            <div class="md-form">-->
+<!--                <label for="score">Score</label>-->
+<!--                <input type="number" th:field="*{score}" id="score" class="form-control">-->
+<!--            </div>-->
 
             <button class="btn btn-outline-secondary btn-lg"
                     onclick="">Add score
@@ -93,34 +82,34 @@
         </div>
 
         <!-- Button trigger modal -->
-<!--        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">-->
-<!--            Launch demo modal-->
-<!--        </button>-->
+        <!--        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">-->
+        <!--            Launch demo modal-->
+        <!--        </button>-->
 
         <!-- Modal -->
-<!--        <dl th:if="${score == 1}" >-->
-<!--            <dd>-->
-<!--        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
-<!--            <div class="modal-dialog" role="document">-->
-<!--                <div class="modal-content">-->
-<!--                    <div class="modal-header">-->
-<!--                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
-<!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
-<!--                            <span aria-hidden="false">&times;</span>-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                    <div class="modal-body">-->
-<!--                        ...-->
-<!--                    </div>-->
-<!--                    <div class="modal-footer">-->
-<!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
-<!--                        <button type="button" class="btn btn-primary">Save changes</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--            </dd>-->
-<!--        </dl>-->
+        <!--        <dl th:if="${score == 1}" >-->
+        <!--            <dd>-->
+        <!--        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+        <!--            <div class="modal-dialog" role="document">-->
+        <!--                <div class="modal-content">-->
+        <!--                    <div class="modal-header">-->
+        <!--                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+        <!--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+        <!--                            <span aria-hidden="false">&times;</span>-->
+        <!--                        </button>-->
+        <!--                    </div>-->
+        <!--                    <div class="modal-body">-->
+        <!--                        ...-->
+        <!--                    </div>-->
+        <!--                    <div class="modal-footer">-->
+        <!--                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+        <!--                        <button type="button" class="btn btn-primary">Save changes</button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--            </dd>-->
+        <!--        </dl>-->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
                 crossorigin="anonymous">

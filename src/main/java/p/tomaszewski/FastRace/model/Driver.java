@@ -22,7 +22,7 @@ public class Driver {
     @NotEmpty
     private String car;
     private LocalDateTime overview;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "driver")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "driver", orphanRemoval = true)
     private Set<DriverRaceResult> driverRaceResults;
 
     public Driver() {
