@@ -30,9 +30,22 @@ public class DriverController {
     }
 
     @GetMapping("/addDriver")
-    String showProjects(Model model){
+    String getDriverPage(Model model){
         var driverToEdit = new Driver();
         model.addAttribute("driver", driverToEdit);
+        return "addDriver";
+    }
+
+    @PostMapping("/addDriver")
+    String addDriver(@Valid
+                      @ModelAttribute("driver") DriverWriteModel current,
+                      BindingResult bindingResult,
+                      Model model){
+        if(bindingResult.hasErrors()){
+            return "addDriver";
+        }
+        service.createDriver(current);
+        model.addAttribute("driver", new DriverWriteModel());
         return "addDriver";
     }
 
@@ -56,18 +69,7 @@ public class DriverController {
 
 
 
-    @PostMapping("/addDriver")
-    String addProject(@Valid
-                      @ModelAttribute("driver") DriverWriteModel current,
-                      BindingResult bindingResult,
-                      Model model){
-        if(bindingResult.hasErrors()){
-            return "addDriver";
-        }
-        service.createDriver(current);
-        model.addAttribute("driver", new DriverWriteModel());
-        return "addDriver";
-    }
+
 
 
 

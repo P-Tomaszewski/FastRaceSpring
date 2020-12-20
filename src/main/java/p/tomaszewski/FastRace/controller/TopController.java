@@ -23,14 +23,14 @@ public class TopController {
 
 
     @GetMapping
-    String showTopDrivers(Model model){
+    String getTopDrivers(Model model){
         var drivers = new Driver();
         model.addAttribute("driver2", drivers);
         return "top";
     }
 
     @ModelAttribute("drivers")
-    List<DriverReadModel> getDrivers(){
+    List<DriverReadModel> showDrivers(){
         List<DriverReadModel> list = service.readAll();
         list.sort(Comparator.comparingInt(DriverReadModel::getDriverRaceResultsScoreSum).reversed());
         return list;

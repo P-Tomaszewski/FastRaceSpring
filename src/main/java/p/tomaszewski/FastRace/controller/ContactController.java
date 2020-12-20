@@ -25,7 +25,7 @@ public class ContactController {
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    String addProject(@Valid @ModelAttribute("contact") Contact contact, BindingResult bindingResult) {
+    String postContact(@Valid @ModelAttribute("contact") Contact contact, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "contact";
         }

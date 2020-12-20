@@ -2,8 +2,6 @@ package p.tomaszewski.FastRace.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +16,6 @@ import p.tomaszewski.FastRace.model.projection.DriverReadModel;
 import p.tomaszewski.FastRace.model.projection.RaceReadModel;
 
 import javax.validation.Valid;
-import java.net.URI;
 import java.util.List;
 
 @Controller
@@ -42,14 +39,14 @@ public class DriverRaceResultController {
 
 
     @GetMapping("/addScore")
-    String showProjects(Model model){
+    String showScorePage(Model model){
         var driverRaceResult = new DriverRaceResult();
         model.addAttribute("driverraceresult", driverRaceResult);
         return "addScore";
     }
 
     @PostMapping("/addScore")
-    String addRace(@Valid
+    String addScore(@Valid
                    @ModelAttribute("driverraceresult") DriverRaceResultWriteModel current,
                    BindingResult bindingResult,
                    Model model) {

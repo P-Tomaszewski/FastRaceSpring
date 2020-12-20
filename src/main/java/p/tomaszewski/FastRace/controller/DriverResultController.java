@@ -45,7 +45,7 @@ public class DriverResultController {
 
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    String getResult(@Valid @ModelAttribute("result2") DriverResult currency, BindingResult bindingResult, Model model){
+    String setResult(@Valid @ModelAttribute("result2") DriverResult currency, BindingResult bindingResult, Model model){
         DriverResult driverResult = new DriverResult();
         Set<DriverRaceResult> driverRaceResultReadModelList;
 
